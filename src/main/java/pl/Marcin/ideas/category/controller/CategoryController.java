@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.service.CategoryService;
+import pl.Marcin.ideas.question.domain.model.Question;
+import pl.Marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,17 +14,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @RequestMapping("categories")
 public class CategoryController {
-    /**
-     * CRUD: create, read, update, delete
-     *
-     * getCategories - wszystkie kategorie
-     * getCategory - done as getQuestions(categoryId)
-     * createCategory
-     * updateCategory
-     * deleteCategory
-     *
-     */
+
     private final CategoryService categoryService;
+    private final QuestionService questionService;
 
     @GetMapping
     List<Category> getCategories() {
@@ -30,8 +24,8 @@ public class CategoryController {
     }
 
     @GetMapping("{id}")
-    Category getCategory(@PathVariable UUID id) {
-        return categoryService.getCategory(id);
+    List<Question> getCategory(@PathVariable UUID id) {
+        return questionService.findAllByCategoryId(id);
     }
 
     @PostMapping("{id}")
