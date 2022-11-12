@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.AnswerService;
 import pl.Marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
