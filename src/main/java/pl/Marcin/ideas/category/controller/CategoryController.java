@@ -16,7 +16,6 @@ import java.util.UUID;
 public class CategoryController {
 
     private final CategoryService categoryService;
-    private final QuestionService questionService;
 
     @GetMapping
     List<Category> getCategories() {
@@ -25,7 +24,7 @@ public class CategoryController {
 
     @GetMapping("{id}")
     List<Question> getCategory(@PathVariable UUID id) {
-        return questionService.findAllByCategoryId(id);
+        return categoryService.getCategory(id);
     }
 
     @PostMapping("{id}")

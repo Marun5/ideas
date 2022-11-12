@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
+import pl.Marcin.ideas.question.domain.model.Question;
+import pl.Marcin.ideas.question.domain.repository.QuestionRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,6 +16,7 @@ import java.util.UUID;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
     public List<Category> getCategories() {
@@ -21,8 +24,8 @@ public class CategoryService {
     }
 
     @Transactional(readOnly = true)
-    public Category getCategory(UUID id) {
-        return categoryRepository.getReferenceById(id);
+    public List<Question> getCategory(UUID id) {
+        return questionRepository.findAllByCategoryId(id);
     }
 
     @Transactional

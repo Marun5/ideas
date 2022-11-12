@@ -34,7 +34,7 @@ public class AnswerService {
         answer.setName(answerRequest.getName());
 
         Question question = questionRepository.getReferenceById(questionId);
-        question.addAnswer(answer);
+        answer.setQuestion(question);
         questionRepository.save(question);
         answerRepository.save(answer);
 

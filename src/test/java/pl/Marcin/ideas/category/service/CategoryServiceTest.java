@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
+import pl.Marcin.ideas.question.domain.repository.AnswerRepository;
+import pl.Marcin.ideas.question.domain.repository.QuestionRepository;
 
 import java.util.List;
 
@@ -17,13 +19,18 @@ class CategoryServiceTest {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
+    @Autowired
+    private QuestionRepository questionRepository;
+    @Autowired
+    private AnswerRepository answerRepository;
     @Autowired
     private CategoryService categoryService;
 
     @Test
     void shouldGetAllCategories() {
         //given
+        answerRepository.deleteAll();
+        questionRepository.deleteAll();
         categoryRepository.deleteAll();
 
         categoryRepository.saveAll(List.of(
@@ -40,21 +47,6 @@ class CategoryServiceTest {
                 .extracting(Category::getName)
                 .containsExactlyInAnyOrder("Category 1", "Category 2", "Category 3");
 
-    }
-
-    @Test
-    void shouldGetOneCategory() {
-        //given
-        categoryRepository.deleteAll();
-
-        Category category = new Category("Category 1");
-        categoryRepository.save(category);
-
-        //when
-        Category result = categoryService.getCategory(category.getId());
-
-        //then
-        assertThat(result.getId()).isEqualTo(category.getId());
     }
 
     @Test
