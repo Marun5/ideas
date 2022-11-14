@@ -37,13 +37,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">All categories</h3>
+                                <a th:href="@{categories/add}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-plus"></i> Add category
+                                </a>
 
                                 <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 300px;">
-                                        <a th:href="@{categories/add}" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-plus"></i> Add category
-                                        </a>
+                                    <div class="input-group input-group-sm" style="width: 200px;">
+
                                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">

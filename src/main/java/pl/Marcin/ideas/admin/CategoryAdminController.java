@@ -20,26 +20,26 @@ public class CategoryAdminController {
     private final QuestionService questionService;
 
     @GetMapping
-    public String allView(Model model) {
+    public String allCategoryView(Model model) {
         model.addAttribute("categories", categoryService.getCategories());
         return "admin/categories";
     }
 
     //addCategory
     @GetMapping("add")
-    public String addView(Model model) {
+    public String addCategoryView(Model model) {
         model.addAttribute("category", new Category());
         return "admin/addCategory";
     }
 
     @PostMapping("add")
-    public String add(@ModelAttribute("category") Category category, Model model) {
+    public String addCategory(@ModelAttribute("category") Category category, Model model) {
         model.addAttribute("category", categoryService.createCategory(category));
         return "redirect:/admin/categories";
     }
 
     @GetMapping("{id}")
-    public String singleView(@PathVariable UUID id, Model model) {
+    public String singleCategoryView(@PathVariable UUID id, Model model) {
         model.addAttribute("category", categoryService.getCategory(id));
         model.addAttribute("questions", categoryService.findAllByCategoryId(id));
         return "admin/singleCategory";
@@ -62,21 +62,20 @@ public class CategoryAdminController {
         return "redirect:/admin/categories/{id}";
     }
 
-    //editCategory
     @GetMapping("{id}/edit")
-    public String editView(@PathVariable UUID id, Model model) {
+    public String editCategoryView(@PathVariable UUID id, Model model) {
         model.addAttribute("category", categoryService.getCategory(id));
         return "admin/editCategory";
     }
 
     @PostMapping("{id}/edit")
-    public String edit(@PathVariable UUID id, @ModelAttribute("category") Category category) {
+    public String editCategory(@PathVariable UUID id, @ModelAttribute("category") Category category) {
         categoryService.updateCategory(id, category);
         return "redirect:/admin/categories";
     }
 
     @GetMapping("{id}/delete")
-    public String delete(@PathVariable UUID id) {
+    public String deleteCategory(@PathVariable UUID id) {
         categoryService.deleteCategory(id);
         return "redirect:/admin/categories";
     }
