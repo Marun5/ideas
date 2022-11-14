@@ -21,9 +21,14 @@ public class QuestionController {
         return questionService.findAllByCategoryId(id);
     }
 
-    @GetMapping("{id}")
-    List<Answer> getQuestion(@PathVariable UUID id) {
+    //not used here
+    Question getQuestion(@PathVariable UUID id) {
         return questionService.getQuestion(id);
+    }
+
+    @GetMapping("{id}")
+    List<Answer> findAllByQuestionId(@PathVariable UUID id) {
+        return questionService.findAllByQuestionId(id);
     }
 
     @PostMapping("{id}")

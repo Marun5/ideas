@@ -24,7 +24,12 @@ public class CategoryService {
     }
 
     @Transactional(readOnly = true)
-    public List<Question> getCategory(UUID id) {
+    public Category getCategory(UUID id) {
+        return categoryRepository.getReferenceById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Question> findAllByCategoryId(UUID id) {
         return questionRepository.findAllByCategoryId(id);
     }
 

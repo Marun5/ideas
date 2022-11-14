@@ -1,6 +1,7 @@
 package pl.Marcin.ideas.category.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.service.CategoryService;
@@ -22,9 +23,14 @@ public class CategoryController {
         return categoryService.getCategories();
     }
 
-    @GetMapping("{id}")
-    List<Question> getCategory(@PathVariable UUID id) {
+    //not used here
+    Category getCategory(@PathVariable UUID id) {
         return categoryService.getCategory(id);
+    }
+
+    @GetMapping("{id}")
+    List<Question> findAllByCategoryId(@PathVariable UUID id) {
+        return categoryService.findAllByCategoryId(id);
     }
 
     @PostMapping("{id}")

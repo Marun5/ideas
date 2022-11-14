@@ -1,15 +1,17 @@
-package pl.Marcin.ideas.category.controller;
+package pl.Marcin.ideas.admin;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("/admin")
+@AllArgsConstructor
 public class AdminController {
 
     @GetMapping
-    String indexView() {
-        return "admin/template";
+    public String indexView() {
+        return "admin/index";
     }
 }

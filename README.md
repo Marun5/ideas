@@ -6,4 +6,5 @@
 - categories: view(show questions), edit name, delete(only if empty)
 - admin homePage -> statistics: amount of categories, questions, answers etc.
 - search questions
-- 
+- tests on H2 database
+- POPRAWIĆ TESTY
