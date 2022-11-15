@@ -44,7 +44,8 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="categoryName">Name</label>
-                                <input th:field="${category.name}" type="text" class="form-control" id="categoryName" placeholder="Category name">
+                                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>
+                                <input th:field="*{name}" type="text" class="form-control" id="categoryName" placeholder="Category name">
                             </div>
                         </div>
                         <!-- /.card-body -->

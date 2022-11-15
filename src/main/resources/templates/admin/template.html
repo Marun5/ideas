@@ -353,6 +353,17 @@
         <script src="js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+
+        <th:block th:if="${message!=null}">
+            <script>
+                $(document).Toasts('create', {
+                    class: 'bg-maroon',
+                    title: '[[${message.title}]]',
+                    body: '[[${message.content}]]'
+                })
+            </script>
+        </th:block>
+
     </footer>
 </div>
 <!-- ./wrapper -->

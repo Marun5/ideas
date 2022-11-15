@@ -1,19 +1,25 @@
 package pl.Marcin.ideas.admin;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.service.CategoryService;
+import pl.Marcin.ideas.common.Message;
 import pl.Marcin.ideas.question.domain.model.Question;
 import pl.Marcin.ideas.question.service.QuestionService;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin/categories")
 @AllArgsConstructor
+@Slf4j
 public class CategoryAdminController {
 
     private final CategoryService categoryService;
@@ -33,8 +39,22 @@ public class CategoryAdminController {
     }
 
     @PostMapping("add")
-    public String addCategory(@ModelAttribute("category") Category category, Model model) {
-        model.addAttribute("category", categoryService.createCategory(category));
+    public String addCategory(@Valid @ModelAttribute("category") Category category,
+                              BindingResult bindingResult,
+                              RedirectAttributes ra,
+                              Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("category", category);
+        }
+        try {
+            model.addAttribute("category", categoryService.createCategory(category));
+            ra.addFlashAttribute("message", Message.info("Category has been added"));
+        }catch(Exception e) {
+            log.error("Error on category add", e);
+            model.addAttribute("category", category);
+            ra.addFlashAttribute("message", Message.info("Unknown error occurred on category add."));
+            return "admin/addCategory";
+        }
         return "redirect:/admin/categories";
     }
 
@@ -56,9 +76,24 @@ public class CategoryAdminController {
     }
 
     @PostMapping("{id}/add")
-    public String addQuestion(@PathVariable UUID id, @ModelAttribute("question") Question question, Model model) {
-        model.addAttribute("question", questionService.createQuestion(id, question));
-
+    public String addQuestion(@PathVariable UUID id,
+                              @Valid @ModelAttribute("question") Question question,
+                              BindingResult bindingResult,
+                              RedirectAttributes ra,
+                              Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("category", categoryService.getCategory(id));
+            model.addAttribute("question", question);
+        }
+        try {
+            model.addAttribute("question", questionService.createQuestion(id, question));
+            ra.addFlashAttribute("message", Message.info("Question has been added"));
+        }catch(Exception e) {
+            log.error("Error on question add", e);
+            model.addAttribute("question", question);
+            ra.addFlashAttribute("message", Message.info("Unknown error occurred on question add."));
+            return "admin/addQuestion";
+        }
         return "redirect:/admin/categories/{id}";
     }
 
@@ -69,14 +104,41 @@ public class CategoryAdminController {
     }
 
     @PostMapping("{id}/edit")
-    public String editCategory(@PathVariable UUID id, @ModelAttribute("category") Category category) {
-        categoryService.updateCategory(id, category);
+    public String editCategory(@PathVariable UUID id,
+                               @Valid @ModelAttribute("category") Category category,
+                               BindingResult bindingResult,
+                               RedirectAttributes ra,
+                               Model model) {
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("category", category);
+            return "admin/editCategory";
+        }
+        try {
+            categoryService.updateCategory(id, category);
+            ra.addFlashAttribute("message", Message.info("Category has been changed"));
+        }catch(Exception e) {
+            log.error("Error on category update", e);
+            model.addAttribute("category", category);
+            ra.addFlashAttribute("message", Message.info("Unknown error occurred on category's name update."));
+            return "admin/editCategory";
+        }
         return "redirect:/admin/categories";
     }
 
     @GetMapping("{id}/delete")
-    public String deleteCategory(@PathVariable UUID id) {
-        categoryService.deleteCategory(id);
+    public String deleteCategory(@PathVariable UUID id, RedirectAttributes ra) {
+        try {
+            categoryService.deleteCategory(id);
+            ra.addFlashAttribute("message", Message.info("Category has been deleted"));
+        }catch (Exception e) {
+            if(categoryService.findAllByCategoryId(id).isEmpty()){
+                log.error("Error on category delete", e);
+            }
+            ra.addFlashAttribute("message",
+                    Message.error("Could not delete category. Make sure that category is empty."));
+            return "redirect:/admin/categories";
+        }
         return "redirect:/admin/categories";
     }
 }

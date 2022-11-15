@@ -53,4 +53,8 @@ public class AnswerService {
     public void deleteAnswer(UUID answerId) {
         answerRepository.deleteById(answerId);
     }
+
+    public Integer countCategories() {
+        return answerRepository.findAll().size();
+    }
 }

@@ -45,6 +45,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="answerName">Name</label>
+                                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>
                                 <input th:field="*{name}" type="text" class="form-control" id="answerName" placeholder="Answer name">
                                 <input th:field="*{id}" type="hidden" />
                             </div>

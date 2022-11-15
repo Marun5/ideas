@@ -62,6 +62,7 @@
                                     <tr>
                                         <th>Nr</th>
                                         <th>Question</th>
+                                        <th>Answers</th>
                                         <th>Functions</th>
                                     </tr>
                                     </thead>
@@ -69,6 +70,7 @@
                                     <tr th:each="question, it : ${questions}">
                                         <td th:text="${it.index}+1"></td>
                                         <td th:text="${question.name}"></td>
+                                        <td th:text="${question.answers.size()}"></td>
                                         <td>
                                             <a th:href="@{'questions/'+${question.id}}" class="btn btn-primary btn-sm">
                                                 <i class="fas fa-folder"></i> View

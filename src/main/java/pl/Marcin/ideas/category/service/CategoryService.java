@@ -54,4 +54,8 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
+    @Transactional
+    public Integer countCategories() {
+        return categoryRepository.findAll().size();
+    }
 }

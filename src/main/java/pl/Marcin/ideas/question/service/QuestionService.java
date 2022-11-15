@@ -63,5 +63,7 @@ public class QuestionService {
     }
 
 
-
+    public Integer countCategories() {
+        return questionRepository.findAll().size();
+    }
 }
