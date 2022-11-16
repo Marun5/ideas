@@ -62,8 +62,20 @@ public class QuestionService {
         questionRepository.deleteById(id);
     }
 
-
-    public Integer countCategories() {
+    @Transactional(readOnly = true)
+    public Integer countQuestions() {
         return questionRepository.findAll().size();
+    }
+
+    public List<Question> findRandomQuestions(int limit) {
+        return questionRepository.findRandomQuestions(limit);
+    }
+
+    public List<Question> findHotQuestions() {
+        return questionRepository.findHotQuestions();
+    }
+
+    public List<Question> findUnansweredQuestions() {
+        return questionRepository.findUnansweredQuestions();
     }
 }

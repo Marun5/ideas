@@ -1,11 +1,11 @@
 ## ideas
-- hot, unanswered questions
-- for every category add amount of questions, for questions amount of answers (admin or user)
+- every category with a photo, on index page would be posted with a photo. 
+       Nice way to show another functionality. It requires updating a form for adding category.
+- 
 
 ## TODO
-- statistics: amount of categories, questions, answers on those pages(similar as on home page)
-- search categories, questions, answers
+- search categories, questions, answers!!!
 - tests on H2 database
 - POPRAWIĆ TESTY
-- paging
+- paging!!!(done on admin categories)
 - user/admin

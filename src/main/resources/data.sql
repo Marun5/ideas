@@ -6,6 +6,10 @@ INSERT INTO categories (id, name) VALUES
           (gen_random_uuid(), 'Sport'),
           (gen_random_uuid(), 'Edukacja'),
           (gen_random_uuid(), 'Kulinaria'),
+          (gen_random_uuid(), 'Książka'),
+          (gen_random_uuid(), 'Film'),
+          (gen_random_uuid(), 'IT'),
+          (gen_random_uuid(), 'Mechanika'),
           (gen_random_uuid(), 'Zwierzęta');
 
 insert into questions (id, name, category_id) values

@@ -1,6 +1,7 @@
 package pl.Marcin.ideas.question.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.Marcin.ideas.question.domain.model.Question;
 
@@ -12,4 +13,12 @@ public interface QuestionRepository extends JpaRepository<Question, UUID> {
 
     List<Question> findAllByCategoryId(UUID id);
 
+    @Query(value = "select * from questions q order by random() limit :limit", nativeQuery = true)
+    List<Question> findRandomQuestions(int limit);
+
+    @Query("from Question q order by q.answers.size desc")
+    List<Question> findHotQuestions();
+
+    @Query("from Question q where q.answers.size = 0")
+    List<Question> findUnansweredQuestions();
 }

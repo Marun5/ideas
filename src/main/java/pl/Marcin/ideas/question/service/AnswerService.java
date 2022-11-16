@@ -54,7 +54,7 @@ public class AnswerService {
         answerRepository.deleteById(answerId);
     }
 
-    public Integer countCategories() {
+    public Integer countAnswers() {
         return answerRepository.findAll().size();
     }
 }

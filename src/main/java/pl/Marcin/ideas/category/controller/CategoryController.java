@@ -1,12 +1,10 @@
 package pl.Marcin.ideas.category.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.service.CategoryService;
 import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
 import java.util.UUID;

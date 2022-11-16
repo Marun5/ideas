@@ -2,6 +2,10 @@ package pl.Marcin.ideas.admin;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +18,10 @@ import pl.Marcin.ideas.question.domain.model.Question;
 import pl.Marcin.ideas.question.service.QuestionService;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/admin/categories")
@@ -26,9 +33,24 @@ public class CategoryAdminController {
     private final QuestionService questionService;
 
     @GetMapping
-    public String allCategoryView(Model model) {
-        model.addAttribute("categories", categoryService.getCategories());
+    public String allCategoryView(Model model,
+                                  @RequestParam(name="page", required = false, defaultValue = "0") int page,
+                                  @RequestParam(name="size", required = false, defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Category> categoriesPage = categoryService.getCategories(pageable);
+        model.addAttribute("categoriesPage", categoriesPage);
+        paging(model, categoriesPage);
         return "admin/categories";
+    }
+
+    public void paging(Model model, Page page) {
+        int totalPages = page.getTotalPages();
+        if(totalPages>0){
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
     }
 
     //addCategory

@@ -1,6 +1,8 @@
 package pl.Marcin.ideas.category.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
@@ -21,6 +23,10 @@ public class CategoryService {
     @Transactional(readOnly = true)
     public List<Category> getCategories() {
         return categoryRepository.findAll();
+    }
+    @Transactional(readOnly = true)
+    public Page<Category> getCategories(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
     }
 
     @Transactional(readOnly = true)
@@ -54,8 +60,13 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Integer countCategories() {
         return categoryRepository.findAll().size();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Category> topCategories() {
+        return categoryRepository.topCategories();
     }
 }
