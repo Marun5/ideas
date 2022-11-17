@@ -21,6 +21,10 @@ public class AnswerService {
     private final AnswerRepository answerRepository;
 
     @Transactional(readOnly = true)
+    public List<Answer> getAnswers(String search) {
+        return answerRepository.findAllByNameContainingIgnoreCase(search);
+    }
+    @Transactional(readOnly = true)
     public List<Answer> findAllByQuestionId(UUID id) {
         return answerRepository.findAllByQuestionId(id);
     }
@@ -70,5 +74,4 @@ public class AnswerService {
     public Integer countAnswers() {
         return answerRepository.findAll().size();
     }
-
 }

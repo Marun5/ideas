@@ -12,12 +12,12 @@
 
             <article class="blog-post">
                 <p1 class="p-2 link-secondary">
-                    <a th:text="${question.category.name}" th:href="'categories/'+${question.category.id}"
+                    <a th:text="'&#8592;'+${question.category.name}" th:href="'categories/'+${question.category.id}"
                        style="text-decoration: none"></a></p1>
                 <h2 th:text="${question.name}" class="blog-post-title mb-1"></h2>
                 <p class="blog-post-meta"><a th:text="'Answers: '+${question.answers.size()}"></a></p>
 
-                <table class="table">
+                <table class="table" id="table">
                     <thead>
                     <tr>
                         <th>Nr</th>

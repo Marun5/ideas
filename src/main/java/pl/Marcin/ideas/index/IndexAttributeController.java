@@ -4,6 +4,7 @@ package pl.Marcin.ideas.index;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import pl.Marcin.ideas.category.service.CategoryService;
+import pl.Marcin.ideas.question.service.AnswerService;
 import pl.Marcin.ideas.question.service.QuestionService;
 
 public abstract class IndexAttributeController {
@@ -12,6 +13,8 @@ public abstract class IndexAttributeController {
     protected CategoryService categoryService;
     @Autowired
     protected QuestionService questionService;
+    @Autowired
+    protected AnswerService answerService;
 
     protected void addGlobalAttributes(Model model) {
         model.addAttribute("topCategories", categoryService.topCategories());

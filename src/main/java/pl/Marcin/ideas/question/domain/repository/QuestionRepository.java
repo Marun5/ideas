@@ -13,6 +13,8 @@ import java.util.UUID;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, UUID> {
 
+    List<Question> findAllByNameContainingIgnoreCase(String name);
+
     List<Question> findAllByCategoryId(UUID id);
 
     Page<Question> findAllByCategoryId(UUID id, Pageable pageable);

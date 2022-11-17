@@ -17,5 +17,7 @@ public interface CategoryRepository extends JpaRepository<Category, UUID> {
     @Query("from Category c order by c.questions.size desc")
     List<Category> topCategories();
 
+    List<Category> findAllByNameContainingIgnoreCase(String name);
+
     Page<Category> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }

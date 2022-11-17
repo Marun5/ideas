@@ -23,6 +23,10 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
+    public List<Question> getQuestions(String search) {
+        return questionRepository.findAllByNameContainingIgnoreCase(search);
+    }
+    @Transactional(readOnly = true)
     public List<Question> findAllByCategoryId(UUID id) {
         return questionRepository.findAllByCategoryId(id);
     }

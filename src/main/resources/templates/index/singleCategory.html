@@ -11,12 +11,12 @@
         <div class="col-md-8">
 
             <article class="blog-post">
-                <p1 class="p-2 link-secondary"><a href="categories" style="text-decoration: none">Categories</a></p1>
+                <p1 class="p-2 link-secondary"><a href="categories" style="text-decoration: none">&#8592;Categories</a></p1>
                 <h2 th:text="${category.name}" class="blog-post-title mb-1"></h2>
                 <p class="blog-post-meta"><a th:text="'Questions: '+${category.questions.size()}"></a></p>
 
 
-                <table class="table">
+                <table class="table" id="table">
                     <thead>
                     <tr>
                         <th>Nr</th>

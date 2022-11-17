@@ -4,8 +4,7 @@
 - 
 
 ## TODO
-- search and paging on index?
+- paging on index?
 - tests on H2 database
 - POPRAWIĆ TESTY
 - user/admin
-- search c, q, a together
