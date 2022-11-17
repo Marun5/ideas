@@ -1,6 +1,8 @@
 package pl.Marcin.ideas.question.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
@@ -19,11 +21,22 @@ public class QuestionService {
 
     private final CategoryRepository categoryRepository;
     private final QuestionRepository questionRepository;
-    private final AnswerRepository answerRepository;
 
     @Transactional(readOnly = true)
     public List<Question> findAllByCategoryId(UUID id) {
         return questionRepository.findAllByCategoryId(id);
+    }
+    @Transactional(readOnly = true)
+    public Page<Question> findAllByCategoryId(UUID id, Pageable pageable) {
+        return findAllByCategoryId(id, null, pageable);
+    }
+    @Transactional(readOnly = true)
+    public Page<Question> findAllByCategoryId(UUID id, String search, Pageable pageable) {
+        if(search==null){
+            return questionRepository.findAllByCategoryId(id, pageable);
+        } else {
+            return questionRepository.findAllByCategoryIdAndNameContainingIgnoreCase(id, search, pageable);
+        }
     }
 
     @Transactional(readOnly = true)
@@ -31,10 +44,6 @@ public class QuestionService {
         return questionRepository.getReferenceById(id);
     }
 
-    @Transactional(readOnly = true)
-    public List<Answer> findAllByQuestionId(UUID id) {
-        return answerRepository.findAllByQuestionId(id);
-    }
 
     @Transactional
     public Question createQuestion(UUID categoryId, Question questionRequest) {

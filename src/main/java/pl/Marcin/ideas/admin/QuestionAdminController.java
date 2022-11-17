@@ -2,6 +2,9 @@ package pl.Marcin.ideas.admin;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +19,8 @@ import pl.Marcin.ideas.question.service.QuestionService;
 import javax.validation.Valid;
 import java.util.UUID;
 
+import static pl.Marcin.ideas.admin.ControllerUtils.paging;
+
 @Controller
 @RequestMapping("/admin/questions")
 @AllArgsConstructor
@@ -26,10 +31,20 @@ public class QuestionAdminController {
     private final AnswerService answerService;
 
     @GetMapping("{id}")
-    public String singleQuestionView(@PathVariable UUID id, Model model) {
+    public String singleQuestionView(@PathVariable UUID id,
+                                     @RequestParam(name="s", required = false) String search,
+                                     @RequestParam(name="page", required = false, defaultValue = "0") int page,
+                                     @RequestParam(name="size", required = false, defaultValue = "10") int size,
+                                     Model model) {
         model.addAttribute("category", questionService.getQuestion(id).getCategory());
         model.addAttribute("question", questionService.getQuestion(id));
-        model.addAttribute("answers", questionService.findAllByQuestionId(id));
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Answer> answersPage = answerService.findAllByQuestionId(id, search, pageable);
+        model.addAttribute("answersPage", answersPage);
+        model.addAttribute("search", search);
+        paging(model, answersPage);
+
         return "admin/singleQuestion";
     }
 
@@ -104,7 +119,7 @@ public class QuestionAdminController {
             questionService.deleteQuestion(id);
             ra.addFlashAttribute("message", Message.info("Question has been deleted"));
         }catch (Exception e) {
-            if(questionService.findAllByQuestionId(id).isEmpty()){
+            if(answerService.findAllByQuestionId(id).isEmpty()){
                 log.error("Error on question delete", e);
             }
             ra.addFlashAttribute("message",

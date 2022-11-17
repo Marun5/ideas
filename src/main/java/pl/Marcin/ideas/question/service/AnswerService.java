@@ -1,6 +1,8 @@
 package pl.Marcin.ideas.question.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.question.domain.model.Answer;
@@ -21,6 +23,17 @@ public class AnswerService {
     @Transactional(readOnly = true)
     public List<Answer> findAllByQuestionId(UUID id) {
         return answerRepository.findAllByQuestionId(id);
+    }
+    @Transactional(readOnly = true)
+    public Page<Answer> findAllByQuestionId(UUID id, Pageable pageable) {
+        return findAllByQuestionId(id, null, pageable);
+    }
+    @Transactional(readOnly = true)
+    public Page<Answer> findAllByQuestionId(UUID id, String search, Pageable pageable) {
+        if(search==null){
+            return answerRepository.findAllByQuestionId(id, pageable);
+        }
+        return answerRepository.findAllByQuestionIdAndNameContainingIgnoreCase(id, search, pageable);
     }
 
     @Transactional(readOnly = true)
@@ -57,4 +70,5 @@ public class AnswerService {
     public Integer countAnswers() {
         return answerRepository.findAll().size();
     }
+
 }

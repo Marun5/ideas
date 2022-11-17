@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.service.CategoryService;
 import pl.Marcin.ideas.question.domain.model.Question;
+import pl.Marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final QuestionService questionService;
 
     @GetMapping
     List<Category> getCategories() {
@@ -28,7 +30,7 @@ public class CategoryController {
 
     @GetMapping("{id}")
     List<Question> findAllByCategoryId(@PathVariable UUID id) {
-        return categoryService.findAllByCategoryId(id);
+        return questionService.findAllByCategoryId(id);
     }
 
     @PostMapping("{id}")

@@ -1,5 +1,7 @@
 package pl.Marcin.ideas.category.domain.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,4 +17,5 @@ public interface CategoryRepository extends JpaRepository<Category, UUID> {
     @Query("from Category c order by c.questions.size desc")
     List<Category> topCategories();
 
+    Page<Category> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }

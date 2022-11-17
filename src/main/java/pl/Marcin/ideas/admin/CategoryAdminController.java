@@ -23,6 +23,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static pl.Marcin.ideas.admin.ControllerUtils.paging;
+
 @Controller
 @RequestMapping("/admin/categories")
 @AllArgsConstructor
@@ -34,23 +36,15 @@ public class CategoryAdminController {
 
     @GetMapping
     public String allCategoryView(Model model,
+                                  @RequestParam(name="s", required = false) String search,
                                   @RequestParam(name="page", required = false, defaultValue = "0") int page,
                                   @RequestParam(name="size", required = false, defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Category> categoriesPage = categoryService.getCategories(pageable);
+        Page<Category> categoriesPage = categoryService.getCategories(search, pageable);
         model.addAttribute("categoriesPage", categoriesPage);
+        model.addAttribute("search", search);
         paging(model, categoriesPage);
         return "admin/categories";
-    }
-
-    public void paging(Model model, Page page) {
-        int totalPages = page.getTotalPages();
-        if(totalPages>0){
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
     }
 
     //addCategory
@@ -81,9 +75,19 @@ public class CategoryAdminController {
     }
 
     @GetMapping("{id}")
-    public String singleCategoryView(@PathVariable UUID id, Model model) {
+    public String singleCategoryView(@PathVariable UUID id,
+                                     @RequestParam(name="s", required = false) String search,
+                                     @RequestParam(name="page", required = false, defaultValue = "0") int page,
+                                     @RequestParam(name="size", required = false, defaultValue = "10") int size,
+                                     Model model) {
         model.addAttribute("category", categoryService.getCategory(id));
-        model.addAttribute("questions", categoryService.findAllByCategoryId(id));
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Question> questionsPage = questionService.findAllByCategoryId(id, search, pageable);
+        model.addAttribute("questionsPage", questionsPage);
+        model.addAttribute("search", search);
+        paging(model, questionsPage);
+
         return "admin/singleCategory";
     }
 
@@ -154,7 +158,7 @@ public class CategoryAdminController {
             categoryService.deleteCategory(id);
             ra.addFlashAttribute("message", Message.info("Category has been deleted"));
         }catch (Exception e) {
-            if(categoryService.findAllByCategoryId(id).isEmpty()){
+            if(questionService.findAllByCategoryId(id).isEmpty()){
                 log.error("Error on category delete", e);
             }
             ra.addFlashAttribute("message",

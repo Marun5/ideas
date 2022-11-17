@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
+import pl.Marcin.ideas.question.service.AnswerService;
 import pl.Marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class QuestionController {
 
     private final QuestionService questionService;
+    private final AnswerService answerService;
 
     @GetMapping
     List<Question> findAllByCategoryId(UUID id) {
@@ -28,7 +30,7 @@ public class QuestionController {
 
     @GetMapping("{id}")
     List<Answer> findAllByQuestionId(@PathVariable UUID id) {
-        return questionService.findAllByQuestionId(id);
+        return answerService.findAllByQuestionId(id);
     }
 
     @PostMapping("{id}")

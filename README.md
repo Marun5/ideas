@@ -4,8 +4,8 @@
 - 
 
 ## TODO
-- search categories, questions, answers!!!
+- search and paging on index?
 - tests on H2 database
 - POPRAWIĆ TESTY
-- paging!!!(done on admin categories)
 - user/admin
+- search c, q, a together

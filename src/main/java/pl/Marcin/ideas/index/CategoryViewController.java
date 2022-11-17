@@ -31,7 +31,7 @@ public class CategoryViewController extends IndexAttributeController {
     public String singleCategoryView(@PathVariable UUID id, Model model) {
         addGlobalAttributes(model);
         model.addAttribute("category", categoryService.getCategory(id));
-        model.addAttribute("questions", categoryService.findAllByCategoryId(id));
+        model.addAttribute("questions", questionService.findAllByCategoryId(id));
 
         return "index/singleCategory";
     }

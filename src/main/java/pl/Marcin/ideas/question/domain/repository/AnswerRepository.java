@@ -1,5 +1,7 @@
 package pl.Marcin.ideas.question.domain.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.Marcin.ideas.question.domain.model.Answer;
@@ -11,4 +13,8 @@ import java.util.UUID;
 public interface AnswerRepository extends JpaRepository<Answer, UUID> {
 
     List<Answer> findAllByQuestionId(UUID id);
+
+    Page<Answer> findAllByQuestionId(UUID id, Pageable pageable);
+
+    Page<Answer> findAllByQuestionIdAndNameContainingIgnoreCase(UUID id, String name, Pageable pageable);
 }
