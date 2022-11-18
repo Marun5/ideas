@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
 
 import java.util.List;
@@ -29,5 +30,9 @@ public interface QuestionRepository extends JpaRepository<Question, UUID> {
 
     @Query("from Question q where q.answers.size = 0")
     List<Question> findUnansweredQuestions();
+
+    @Query("from Question q where q.answers.size > 1")
+    List<Question> findQuestionsWithMinTwoAnswers();
+
 
 }

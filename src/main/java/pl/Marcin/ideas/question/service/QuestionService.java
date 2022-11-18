@@ -80,15 +80,23 @@ public class QuestionService {
         return questionRepository.findAll().size();
     }
 
+    @Transactional(readOnly = true)
     public List<Question> findRandomQuestions(int limit) {
         return questionRepository.findRandomQuestions(limit);
     }
 
+    @Transactional(readOnly = true)
     public List<Question> findHotQuestions() {
         return questionRepository.findHotQuestions();
     }
 
+    @Transactional(readOnly = true)
     public List<Question> findUnansweredQuestions() {
         return questionRepository.findUnansweredQuestions();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Question> findQuestionsWithMinTwoAnswers() {
+        return questionRepository.findQuestionsWithMinTwoAnswers();
     }
 }

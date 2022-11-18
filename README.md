@@ -8,3 +8,4 @@
 - tests on H2 database
 - POPRAWIĆ TESTY
 - user/admin
+- finish index random questions with answers

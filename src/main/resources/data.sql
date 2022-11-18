@@ -32,3 +32,11 @@ insert into answers (id, name, question_id) values
       (gen_random_uuid(), 'Tygrys', (select id from questions where name = 'Jakie znasz drapieżne zwierzę?')),
       (gen_random_uuid(), 'Aligator', (select id from questions where name = 'Jakie znasz drapieżne zwierzę?')),
       (gen_random_uuid(), 'Rekin', (select id from questions where name = 'Jakie znasz drapieżne zwierzę?'));
+
+insert into answers (id, name, question_id) values
+    (gen_random_uuid(), 'Pola Elizejskie', (select id from questions where name = 'Co zwiedzić w Paryżu?')),
+    (gen_random_uuid(), 'Wieża Eiffla', (select id from questions where name = 'Co zwiedzić w Paryżu?')),
+    (gen_random_uuid(), 'Piza', (select id from questions where name = 'Co zwiedzić we Włoszech?')),
+    (gen_random_uuid(), 'Neapol', (select id from questions where name = 'Co zwiedzić we Włoszech?')),
+    (gen_random_uuid(), 'Rzym', (select id from questions where name = 'Co zwiedzić we Włoszech?')),
+    (gen_random_uuid(), 'Wenecja', (select id from questions where name = 'Co zwiedzić we Włoszech?'));
