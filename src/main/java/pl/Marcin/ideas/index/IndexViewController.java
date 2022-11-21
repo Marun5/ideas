@@ -1,6 +1,7 @@
 package pl.Marcin.ideas.index;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,6 @@ import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,6 +26,7 @@ public class IndexViewController extends IndexAttributeController {
         List<Question> questionsWithMinTwoAnswers = questionService.findQuestionsWithMinTwoAnswers();
         Collections.shuffle(questionsWithMinTwoAnswers);
         model.addAttribute("questionsWithMinTwoAnswers", questionsWithMinTwoAnswers);
+        model.addAttribute("categories", categoryService.topCategories());
 
         return "index/index";
     }

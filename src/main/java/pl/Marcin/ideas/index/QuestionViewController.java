@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.Marcin.ideas.category.service.CategoryService;
 import pl.Marcin.ideas.question.service.AnswerService;
 import pl.Marcin.ideas.question.service.QuestionService;
 
@@ -32,6 +31,7 @@ public class QuestionViewController extends IndexAttributeController {
     @GetMapping("hot")
     public String hotQuestionsView(Model model) {
         addGlobalAttributes(model);
+        model.addAttribute("hotQuestions", questionService.findHotQuestions());
 
         return "index/hotQuestions";
     }
@@ -39,6 +39,7 @@ public class QuestionViewController extends IndexAttributeController {
     @GetMapping("unanswered")
     public String unansweredQuestionsView(Model model) {
         addGlobalAttributes(model);
+        model.addAttribute("unansweredQuestions", questionService.findUnansweredQuestions());
 
         return "index/unansweredQuestions";
     }

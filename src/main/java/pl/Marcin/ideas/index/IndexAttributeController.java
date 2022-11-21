@@ -19,7 +19,5 @@ public abstract class IndexAttributeController {
     protected void addGlobalAttributes(Model model) {
         model.addAttribute("topCategories", categoryService.topCategories());
         model.addAttribute("randomQuestions", questionService.findRandomQuestions(6));
-        model.addAttribute("hotQuestions", questionService.findHotQuestions());
-        model.addAttribute("unansweredQuestions", questionService.findUnansweredQuestions());
     }
 }
