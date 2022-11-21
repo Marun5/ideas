@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping //dopisać ("/index")
 @RequiredArgsConstructor
 public class IndexViewController extends IndexAttributeController {
 

@@ -9,3 +9,4 @@
 - tests on H2 database
 - POPRAWIĆ TESTY
 - user/admin
+- INDEX VIEW CONTROLLER - poprawić
