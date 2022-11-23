@@ -17,7 +17,7 @@ import java.util.UUID;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, UUID> {
 
-    @Query("from Category c order by c.questions.size desc")
+    @Query("from Category c order by size(c.questions) desc")
     List<Category> topCategories();
 
     List<Category> findAllByNameContainingIgnoreCase(String name);

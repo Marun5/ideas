@@ -67,13 +67,13 @@
                                     <thead>
                                     <tr>
                                         <th>Nr</th>
-                                        <th>Category</th>
+                                        <th><a th:href="@{'categories/'(s=${search}, sortBy=${sortBy}, direction=${reverseSort}, page=${page}, size=${size})}">Category &#8693;</a></th>
                                         <th>Questions</th>
                                         <th>Functions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="category, it : ${categoriesPage}">
+                                    <tr th:each="category, it : ${categoriesPage.content}">
                                         <td th:text="${it.index}+1+${categoriesPage.pageable.pageNumber}*${categoriesPage.pageable.pageSize}"></td>
                                         <td th:text="${category.name}"></td>
                                         <td th:text="${category.questions.size()}"></td>
@@ -100,18 +100,18 @@
                                         <li th:if="${categoriesPage.pageable.pageNumber>0}" class="page-item">
                                             <a class="page-link"
                                                th:href="@{'categories/'(s=${search}, size=${categoriesPage.size},
-                                               page=(${categoriesPage.pageable.pageNumber}-1))}">&laquo;</a>
+                                               page=(${categoriesPage.pageable.pageNumber}-1), sortBy=${sortBy}, direction=${direction})}">&laquo;</a>
                                         </li>
                                         <li th:each="pageNumber : ${pageNumbers}" class="page-item">
                                             <a class="page-link"
-                                               th:href="@{'categories/'(s=${search}, size=${categoriesPage.size}, page=${pageNumber}-1)}"
+                                               th:href="@{'categories/'(s=${search}, size=${categoriesPage.size}, page=${pageNumber}-1, sortBy=${sortBy}, direction=${direction})}"
                                                th:text="${pageNumber}"></a>
                                         </li>
                                         <li th:if="${categoriesPage.pageable.pageNumber}+1<${pageNumbers.size()}"
                                             class="page-item">
                                             <a class="page-link"
                                                th:href="@{'categories/'(s=${search}, size=${categoriesPage.size},
-                                               page=(${categoriesPage.pageable.pageNumber}+1))}">&raquo;</a>
+                                               page=(${categoriesPage.pageable.pageNumber}+1), sortBy=${sortBy}, direction=${direction})}">&raquo;</a>
                                         </li>
                                     </ul>
                                 </div>

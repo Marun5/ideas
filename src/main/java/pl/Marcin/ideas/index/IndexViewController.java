@@ -1,7 +1,6 @@
 package pl.Marcin.ideas.index;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +14,16 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
-@RequestMapping //dopisać ("/index")
+@RequestMapping
 @RequiredArgsConstructor
 public class IndexViewController extends IndexAttributeController {
 
-
     @GetMapping
+    public String index() {
+        return "redirect:/index";
+    }
+
+    @GetMapping("index")
     public String indexView(Model model) {
         addGlobalAttributes(model);
         List<Question> questionsWithMinTwoAnswers = questionService.findQuestionsWithMinTwoAnswers();
@@ -31,7 +34,7 @@ public class IndexViewController extends IndexAttributeController {
         return "index/index";
     }
 
-    @GetMapping("search")
+    @GetMapping("index/search")
     public String searchView(@RequestParam(name="s", required = false) String search, Model model) {
         addGlobalAttributes(model);
         model.addAttribute("search", search);

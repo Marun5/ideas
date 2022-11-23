@@ -3,6 +3,7 @@ package pl.Marcin.ideas.question.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
@@ -17,6 +18,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@Rollback
 class QuestionServiceTest {
 
     @Autowired
@@ -29,7 +31,7 @@ class QuestionServiceTest {
     private QuestionService questionService;
 
     @Test
-    void shouldFindAllQuestionsByCategoryId() {
+    void shouldFindAllByCategoryId() {
         //given
         answerRepository.deleteAll();
         questionRepository.deleteAll();
@@ -55,29 +57,29 @@ class QuestionServiceTest {
                 .extracting(Question::getName)
                 .containsExactlyInAnyOrder("Question1", "Question2", "Question3");
 
-
     }
 
-//    @Test
-//    void shouldGetQuestion() {
-//        //given
-//        answerRepository.deleteAll();
-//        questionRepository.deleteAll();
-//        categoryRepository.deleteAll();
-//
-//        Category category = new Category("Category1");
-//        categoryRepository.save(category);
-//        Question question = new Question("Question1");
-//        question.setCategory(category);
-//        questionRepository.save(question);
-//
-//        //when
-////        List<Answer> result = questionService.getQuestion(question.getId());
-//
-//        //then
-//        assertThat(question.getCategory()).isEqualTo(category);
-//        assertThat(result).isEmpty();
-//    }
+    @Test
+    void shouldGetQuestion() {
+        //given
+        answerRepository.deleteAll();
+        questionRepository.deleteAll();
+        categoryRepository.deleteAll();
+
+        Category category = new Category("Category1");
+        categoryRepository.save(category);
+        Question question = new Question("Question1");
+        question.setCategory(category);
+        questionRepository.save(question);
+
+        //when
+        Question result = questionService.getQuestion(question.getId());
+
+        //then
+        assertThat(result).isEqualTo(question);
+        assertThat(result).isEqualTo(questionRepository.getReferenceById(question.getId()));
+        assertThat(result.getCategory()).isEqualTo(category);
+    }
 
     @Test
     void shouldCreateQuestion() {

@@ -37,17 +37,28 @@ public class CategoryAdminController {
     @GetMapping
     public String allCategoryView(Model model,
                                   @RequestParam(name="s", required = false) String search,
+                                  @RequestParam(name="direction", required = false, defaultValue = "asc") String direction,
+                                  @RequestParam(name="sortBy", required = false, defaultValue = "name") String sortBy,
                                   @RequestParam(name="page", required = false, defaultValue = "0") int page,
                                   @RequestParam(name="size", required = false, defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(direction), sortBy);
         Page<Category> categoriesPage = categoryService.getCategories(search, pageable);
         model.addAttribute("categoriesPage", categoriesPage);
         model.addAttribute("search", search);
+        model.addAttribute("direction", direction);
+        model.addAttribute("sortBy", sortBy);
+        model.addAttribute("page", page);
+        model.addAttribute("size", size);
+
+        String reverseSort;
+        if("asc".equals(direction)){
+            reverseSort = "desc";
+        }else reverseSort = "asc";
+        model.addAttribute("reverseSort", reverseSort);
         paging(model, categoriesPage);
         return "admin/categories";
     }
 
-    //addCategory
     @GetMapping("add")
     public String addCategoryView(Model model) {
         model.addAttribute("category", new Category());

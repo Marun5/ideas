@@ -50,6 +50,25 @@ class CategoryServiceTest {
     }
 
     @Test
+    void shouldGetCategory() {
+        //given
+        answerRepository.deleteAll();
+        questionRepository.deleteAll();
+        categoryRepository.deleteAll();
+
+        Category category = new Category("Category 1");
+        categoryRepository.save(category);
+
+        //when
+        Category result = categoryService.getCategory(category.getId());
+
+        //then
+        assertThat(result).isEqualTo(category);
+        assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getId());
+        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getName());
+    }
+
+    @Test
     void shouldCreateCategory() {
         //given
         Category category = new Category("Category 1");

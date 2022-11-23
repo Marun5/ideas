@@ -20,7 +20,7 @@ public class Category {
     @Id
     private UUID id;
     @NotBlank
-    @Size(min = 3, max = 255)
+    @Size(min = 2, max = 255)
     private String name;
     @OneToMany(mappedBy = "category")
     private List<Question> questions;

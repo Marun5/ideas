@@ -24,13 +24,13 @@ public interface QuestionRepository extends JpaRepository<Question, UUID> {
     @Query(value = "select * from questions q order by random() limit :limit", nativeQuery = true)
     List<Question> findRandomQuestions(int limit);
 
-    @Query("from Question q order by q.answers.size desc")
+    @Query("from Question q order by size(q.answers) desc")
     List<Question> findHotQuestions();
 
-    @Query("from Question q where q.answers.size = 0")
+    @Query("from Question q where size(q.answers) = 0")
     List<Question> findUnansweredQuestions();
 
-    @Query("from Question q where q.answers.size > 1")
+    @Query("from Question q where size(q.answers) > 1")
     List<Question> findQuestionsWithMinTwoAnswers();
 
 
