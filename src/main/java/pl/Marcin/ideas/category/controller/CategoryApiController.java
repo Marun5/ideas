@@ -1,6 +1,9 @@
 package pl.Marcin.ideas.category.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.service.CategoryService;
@@ -12,18 +15,18 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("categories")
-public class CategoryController {
+@RequestMapping("api/categories")
+public class CategoryApiController {
 
     private final CategoryService categoryService;
     private final QuestionService questionService;
 
     @GetMapping
-    List<Category> getCategories() {
-        return categoryService.getCategories();
+    Page<Category> getCategories(Pageable pageable) {
+        return categoryService.getCategories(pageable);
     }
 
-    //not used here
+    @GetMapping("single/{id}")
     Category getCategory(@PathVariable UUID id) {
         return categoryService.getCategory(id);
     }
@@ -33,19 +36,28 @@ public class CategoryController {
         return questionService.findAllByCategoryId(id);
     }
 
-    @PostMapping("{id}")
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     Category createCategory(@RequestBody Category category) {
         return categoryService.createCategory(category);
     }
 
     @PutMapping("{id}")
-    Category updateCategory(@RequestParam UUID id, @RequestBody Category category) {
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    Category updateCategory(@PathVariable UUID id, @RequestBody Category category) {
         return categoryService.updateCategory(id, category);
     }
 
     @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteCategory(@PathVariable UUID id) {
         categoryService.deleteCategory(id);
+    }
+
+    @PostMapping("{categoryId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    Question createQuestion(@PathVariable UUID categoryId, @RequestBody Question question) {
+        return questionService.createQuestion(categoryId, question);
     }
 
 }

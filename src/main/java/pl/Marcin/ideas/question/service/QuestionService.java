@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
-import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.domain.repository.AnswerRepository;
 import pl.Marcin.ideas.question.domain.repository.QuestionRepository;
 
 import java.util.List;
@@ -22,6 +20,10 @@ public class QuestionService {
     private final CategoryRepository categoryRepository;
     private final QuestionRepository questionRepository;
 
+    @Transactional(readOnly = true)
+    public List<Question> getQuestions() {
+        return questionRepository.findAll();
+    }
     @Transactional(readOnly = true)
     public List<Question> getQuestions(String search) {
         return questionRepository.findAllByNameContainingIgnoreCase(search);

@@ -72,4 +72,5 @@ public class CategoryService {
     public List<Category> topCategories() {
         return categoryRepository.topCategories();
     }
+
 }

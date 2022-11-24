@@ -18,10 +18,7 @@ import pl.Marcin.ideas.question.domain.model.Question;
 import pl.Marcin.ideas.question.service.QuestionService;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static pl.Marcin.ideas.admin.ControllerUtils.paging;
 
@@ -37,8 +34,8 @@ public class CategoryAdminController {
     @GetMapping
     public String allCategoryView(Model model,
                                   @RequestParam(name="s", required = false) String search,
-                                  @RequestParam(name="direction", required = false, defaultValue = "asc") String direction,
-                                  @RequestParam(name="sortBy", required = false, defaultValue = "name") String sortBy,
+                                  @RequestParam(name="direction", required = false, defaultValue = "desc") String direction,
+                                  @RequestParam(name="sortBy", required = false, defaultValue = "id") String sortBy,
                                   @RequestParam(name="page", required = false, defaultValue = "0") int page,
                                   @RequestParam(name="size", required = false, defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(direction), sortBy);
@@ -72,6 +69,13 @@ public class CategoryAdminController {
                               Model model) {
         if(bindingResult.hasErrors()){
             model.addAttribute("category", category);
+        }
+
+        for(Category categ : categoryService.getCategories()) {
+            if(categ.getName().equalsIgnoreCase(category.getName())){
+                model.addAttribute("message", Message.info("Category already exists"));
+                return "admin/addCategory";
+            }
         }
         try {
             model.addAttribute("category", categoryService.createCategory(category));

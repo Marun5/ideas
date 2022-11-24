@@ -1,6 +1,7 @@
 package pl.Marcin.ideas.question.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
@@ -12,40 +13,41 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("questions")
-public class QuestionController {
-
+@RequestMapping("api/questions")
+public class QuestionApiController {
     private final QuestionService questionService;
     private final AnswerService answerService;
 
     @GetMapping
-    List<Question> findAllByCategoryId(UUID id) {
-        return questionService.findAllByCategoryId(id);
+    List<Question> getQuestions() {
+        return questionService.getQuestions();
     }
-
-    //not used here
+    @GetMapping("{id}")
     Question getQuestion(@PathVariable UUID id) {
         return questionService.getQuestion(id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{id}/answers")
     List<Answer> findAllByQuestionId(@PathVariable UUID id) {
         return answerService.findAllByQuestionId(id);
     }
 
-    @PostMapping("{id}")
-    Question createQuestion(@RequestParam UUID categoryId, @RequestBody Question question) {
-        return questionService.createQuestion(categoryId, question);
-    }
-
     @PutMapping("{id}")
-    Question updateQuestion(@RequestParam UUID id, @RequestBody Question question) {
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    Question updateQuestion(@PathVariable UUID id, @RequestBody Question question) {
         return questionService.updateQuestion(id, question);
     }
 
     @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteQuestion(@PathVariable UUID id) {
         questionService.deleteQuestion(id);
+    }
+
+    @PostMapping("{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    Answer createAnswer(@PathVariable UUID id, @RequestBody Answer answer) {
+        return answerService.createAnswer(id, answer);
     }
 
 }

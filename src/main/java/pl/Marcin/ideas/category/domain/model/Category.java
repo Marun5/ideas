@@ -3,10 +3,7 @@ package pl.Marcin.ideas.category.domain.model;
 import lombok.Data;
 import pl.Marcin.ideas.question.domain.model.Question;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;

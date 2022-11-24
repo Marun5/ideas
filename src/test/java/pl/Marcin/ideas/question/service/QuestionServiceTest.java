@@ -7,7 +7,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
-import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
 import pl.Marcin.ideas.question.domain.repository.AnswerRepository;
 import pl.Marcin.ideas.question.domain.repository.QuestionRepository;
