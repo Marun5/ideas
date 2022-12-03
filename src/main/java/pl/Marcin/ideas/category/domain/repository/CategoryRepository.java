@@ -19,4 +19,7 @@ public interface CategoryRepository extends JpaRepository<Category, UUID> {
     List<Category> findAllByNameContainingIgnoreCase(String name);
 
     Page<Category> findByNameContainingIgnoreCase(String name, Pageable pageable);
+
+    @Query("from Category c where size(c.questions) = 0")
+    List<Category> countEmptyCategories();
 }

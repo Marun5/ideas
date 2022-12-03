@@ -73,4 +73,7 @@ public class CategoryService {
         return categoryRepository.topCategories();
     }
 
+    public List<Category> countEmptyCategories() {
+        return categoryRepository.countEmptyCategories();
+    }
 }

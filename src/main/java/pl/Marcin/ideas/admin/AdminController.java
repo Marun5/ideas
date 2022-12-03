@@ -21,6 +21,7 @@ public class AdminController {
     @GetMapping
     public String indexView(Model model) {
         model.addAttribute("countCategories", categoryService.countCategories());
+        model.addAttribute("countEmptyCategories", categoryService.countEmptyCategories().size());
         model.addAttribute("countQuestions", questionService.countQuestions());
         model.addAttribute("countAnswers", answerService.countAnswers());
         model.addAttribute("countUnansweredQuestions", questionService.findUnansweredQuestions().size());
