@@ -47,7 +47,7 @@
 
                 <h3 th:text="${category.name}"></h3>
                 <p class="blog-post-meta" th:text="'Questions: '+${category.questions.size()}"></p>
-                <table class="table">
+                <table class="table" id="table">
                     <thead>
                     <tr>
                         <th>Random questions</th>
@@ -56,7 +56,8 @@
                     </thead>
                     <tbody>
                     <tr th:each="question : ${category.questions}">
-                        <td th:text="${question.name}"></td>
+                        <td><a th:text="${question.name}" th:href="'questions/'+${question.id}"
+                               class="p-2 link-secondary" style="text-decoration: none"></a></td>
                         <td th:text="${question.answers.size()}"></td>
                     </tr>
                     </tbody>
