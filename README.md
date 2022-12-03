@@ -7,8 +7,13 @@ Application has two sections: game and admin. Game section is divided into three
 
 <h2>🚀 Screenshots</h2>
 
+![index home](https://user-images.githubusercontent.com/113288219/205456522-e5722e31-9e27-47ea-9f55-729f21aa3e56.JPG)
 
+![index hot questions](https://user-images.githubusercontent.com/113288219/205456524-a88c37b1-18b0-4e6c-a88f-4d15547fcc4c.JPG)
 
+![admin home](https://user-images.githubusercontent.com/113288219/205456531-748ccc0f-5a7e-43fe-8163-1f21a25dfc3b.JPG)
+
+![admin categories](https://user-images.githubusercontent.com/113288219/205456540-010477c1-c7b1-4f9f-a404-da7e7781e289.JPG)
 
 <h2>💻 Built with</h2>
 
