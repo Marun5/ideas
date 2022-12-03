@@ -25,6 +25,14 @@ public class QuestionService {
         return questionRepository.findAll();
     }
     @Transactional(readOnly = true)
+    public Page<Question> getQuestions(String search, Pageable pageable) {
+        if(search==null){
+            return questionRepository.findAll(pageable);
+        } else {
+            return questionRepository.findAllByNameContainingIgnoreCase(search, pageable);
+        }
+    }
+    @Transactional(readOnly = true)
     public List<Question> getQuestions(String search) {
         return questionRepository.findAllByNameContainingIgnoreCase(search);
     }

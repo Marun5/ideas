@@ -33,5 +33,5 @@ public interface QuestionRepository extends JpaRepository<Question, UUID> {
     @Query("from Question q where size(q.answers) > 1")
     List<Question> findQuestionsWithMinTwoAnswers();
 
-
+    Page<Question> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
 }

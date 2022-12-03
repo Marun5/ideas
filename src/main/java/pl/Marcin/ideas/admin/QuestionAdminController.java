@@ -5,11 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.Marcin.ideas.category.domain.model.Category;
 import pl.Marcin.ideas.common.Message;
 import pl.Marcin.ideas.question.domain.model.Answer;
 import pl.Marcin.ideas.question.domain.model.Question;
@@ -29,6 +31,31 @@ public class QuestionAdminController {
 
     private final QuestionService questionService;
     private final AnswerService answerService;
+
+    @GetMapping
+    public String allQuestionsView(Model model,
+                                   @RequestParam(name="s", required = false) String search,
+                                   @RequestParam(name="direction", required = false, defaultValue = "desc") String direction,
+                                   @RequestParam(name="sortBy", required = false, defaultValue = "id") String sortBy,
+                                   @RequestParam(name="page", required = false, defaultValue = "0") int page,
+                                   @RequestParam(name="size", required = false, defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(direction), sortBy);
+        Page<Question> questionsPage = questionService.getQuestions(search, pageable);
+        model.addAttribute("questionsPage", questionsPage);
+        model.addAttribute("search", search);
+        model.addAttribute("direction", direction);
+        model.addAttribute("sortBy", sortBy);
+        model.addAttribute("page", page);
+        model.addAttribute("size", size);
+
+        String reverseSort;
+        if("asc".equals(direction)){
+            reverseSort = "desc";
+        }else reverseSort = "asc";
+        model.addAttribute("reverseSort", reverseSort);
+        paging(model, questionsPage);
+        return "admin/questions";
+    }
 
     @GetMapping("{id}")
     public String singleQuestionView(@PathVariable UUID id,
