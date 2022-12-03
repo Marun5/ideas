@@ -20,4 +20,6 @@ public interface AnswerRepository extends JpaRepository<Answer, UUID> {
     Page<Answer> findAllByQuestionId(UUID id, Pageable pageable);
 
     Page<Answer> findAllByQuestionIdAndNameContainingIgnoreCase(UUID id, String name, Pageable pageable);
+
+    Page<Answer> findAllByNameContainingIgnoreCase(String search, Pageable pageable);
 }

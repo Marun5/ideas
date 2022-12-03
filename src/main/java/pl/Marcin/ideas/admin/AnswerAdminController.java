@@ -2,6 +2,10 @@ package pl.Marcin.ideas.admin;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,9 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.Marcin.ideas.common.Message;
 import pl.Marcin.ideas.question.domain.model.Answer;
+import pl.Marcin.ideas.question.domain.model.Question;
 import pl.Marcin.ideas.question.service.AnswerService;
 
 import java.util.UUID;
+
+import static pl.Marcin.ideas.admin.ControllerUtils.paging;
 
 @Controller
 @RequestMapping("/admin/answers")
@@ -20,6 +27,31 @@ import java.util.UUID;
 public class AnswerAdminController {
 
     private final AnswerService answerService;
+
+    @GetMapping
+    public String allAnswersView(Model model,
+                                   @RequestParam(name="s", required = false) String search,
+                                   @RequestParam(name="direction", required = false, defaultValue = "desc") String direction,
+                                   @RequestParam(name="sortBy", required = false, defaultValue = "id") String sortBy,
+                                   @RequestParam(name="page", required = false, defaultValue = "0") int page,
+                                   @RequestParam(name="size", required = false, defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(direction), sortBy);
+        Page<Answer> answersPage = answerService.getAnswers(search, pageable);
+        model.addAttribute("answersPage", answersPage);
+        model.addAttribute("search", search);
+        model.addAttribute("direction", direction);
+        model.addAttribute("sortBy", sortBy);
+        model.addAttribute("page", page);
+        model.addAttribute("size", size);
+
+        String reverseSort;
+        if("asc".equals(direction)){
+            reverseSort = "desc";
+        }else reverseSort = "asc";
+        model.addAttribute("reverseSort", reverseSort);
+        paging(model, answersPage);
+        return "admin/answers";
+    }
 
     @GetMapping("{id}/edit")
     public String editAnswerView(@PathVariable UUID id, Model model) {

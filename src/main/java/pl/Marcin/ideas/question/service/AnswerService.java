@@ -29,6 +29,14 @@ public class AnswerService {
         return answerRepository.findAllByNameContainingIgnoreCase(search);
     }
     @Transactional(readOnly = true)
+    public Page<Answer> getAnswers(String search, Pageable pageable) {
+        if(search==null){
+            return answerRepository.findAll(pageable);
+        } else {
+            return answerRepository.findAllByNameContainingIgnoreCase(search, pageable);
+        }
+    }
+    @Transactional(readOnly = true)
     public List<Answer> findAllByQuestionId(UUID id) {
         return answerRepository.findAllByQuestionId(id);
     }
