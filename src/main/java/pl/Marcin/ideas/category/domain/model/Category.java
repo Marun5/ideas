@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Category {
 
     @Id
+    @Column(columnDefinition = "uuid")
     private UUID id;
     @NotBlank
     @Size(min = 2, max = 255)

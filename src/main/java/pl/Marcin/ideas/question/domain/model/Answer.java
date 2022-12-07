@@ -2,10 +2,7 @@ package pl.Marcin.ideas.question.domain.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.UUID;
@@ -16,6 +13,7 @@ import java.util.UUID;
 public class Answer {
 
     @Id
+    @Column(columnDefinition = "uuid")
     private UUID id;
     @NotBlank
     @Size(max = 255)
