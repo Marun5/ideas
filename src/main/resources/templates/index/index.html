@@ -20,7 +20,7 @@
                     <a th:href="'questions/'+${questionsWithMinTwoAnswers.get(0).id}" class="stretched-link">See more</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <img th:src="${'img/'+questionsWithMinTwoAnswers.get(0).category.name}+'.jpg'" alt="Category photo" class="img-fluid">
+                    <img th:src="'/index/img/'+${questionsWithMinTwoAnswers.get(0).category.name}+'.jpg'" alt="Category photo" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                     <a th:href="'questions/'+${questionsWithMinTwoAnswers.get(1).id}" class="stretched-link">See more</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <img th:src="${'img/'+questionsWithMinTwoAnswers.get(1).category.name}+'.jpg'" alt="Category photo" class="img-fluid">
+                    <img th:src="'/index/img/'+${questionsWithMinTwoAnswers.get(1).category.name}+'.jpg'" alt="Category photo" class="img-fluid">
                 </div>
             </div>
         </div>
