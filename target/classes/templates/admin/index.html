@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/template::head(title = 'Admin')"></head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <th:block th:replace="admin/template :: navbar"/>
+
+    <th:block th:replace="admin/template :: sidebar"/>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Home</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Home</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3 th:text="${countCategories}"></h3>
+
+                                <p>All categories</p>
+                            </div>
+                            <a href="categories" class="small-box-footer">More <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3 th:text="${countEmptyCategories}"></h3>
+
+                                <p>Empty categories</p>
+                            </div>
+                            <a href="categories" class="small-box-footer">More <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3 th:text="${countQuestions}"></h3>
+
+                                <p>All questions</p>
+                            </div>
+                            <a href="questions" class="small-box-footer">More <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3 th:text="${countUnansweredQuestions}"></h3>
+
+                                <p>Unanswered questions</p>
+                            </div>
+                            <a href="/index/questions/unanswered" class="small-box-footer">More <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3 th:text="${countAnswers}"></h3>
+
+                                <p>All answers</p>
+                            </div>
+                            <a href="answers" class="small-box-footer">More <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <th:block th:replace="admin/template :: rightbar"/>
+
+    <th:block th:replace="admin/template :: footer"/>
+</div>
+<!-- ./wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+pl\Marcin\ideas\category\controller\CategoryApiControllerTest.class
+pl\Marcin\ideas\IdeasApplicationTests.class
+pl\Marcin\ideas\question\controller\AnswerApiControllerTest.class
+pl\Marcin\ideas\question\service\AnswerServiceTest.class
+pl\Marcin\ideas\question\controller\QuestionApiControllerTest.class
+pl\Marcin\ideas\question\service\QuestionServiceTest.class
+pl\Marcin\ideas\category\service\CategoryServiceTest.class

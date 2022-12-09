@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index/template::head(title = 'Ideas | '+${category.name})"></head>
+<body>
+
+<th:block th:replace="index/template :: header" />
+
+<main class="container">
+
+    <div class="row g-5">
+        <div class="col-md-8">
+
+            <article class="blog-post">
+                <p1 class="p-2 link-secondary"><a href="categories" style="text-decoration: none">&#8592;Categories</a></p1>
+                <h2 th:text="${category.name}" class="blog-post-title mb-1"></h2>
+                <p class="blog-post-meta"><a th:text="'Questions: '+${category.questions.size()}"></a></p>
+
+
+                <table class="table" id="table">
+                    <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>Question</th>
+                        <th>Answers</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="question, it : ${questions}">
+                        <td th:text="${it.index+1}"></td>
+                        <td><a th:text="${question.name}" th:href="'questions/'+${question.id}"
+                               class="p-2 link-secondary" style="text-decoration: none"></a></td>
+                        <td th:text="${question.answers.size()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </article>
+
+        </div>
+
+        <th:block th:replace="index/template :: rightbar" />
+    </div>
+
+</main>
+
+<th:block th:replace="index/template :: footer" />
+
+</body>
+</html>

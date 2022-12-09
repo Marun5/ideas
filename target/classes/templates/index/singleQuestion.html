@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index/template::head(title = 'Ideas | '+${question.name})"></head>
+<body>
+
+<th:block th:replace="index/template :: header" />
+
+<main class="container">
+
+    <div class="row g-5">
+        <div class="col-md-8">
+
+            <article class="blog-post">
+                <p1 class="p-2 link-secondary">
+                    <a th:text="'&#8592;'+${question.category.name}" th:href="'categories/'+${question.category.id}"
+                       style="text-decoration: none"></a></p1>
+                <h2 th:text="${question.name}" class="blog-post-title mb-1"></h2>
+                <p class="blog-post-meta"><a th:text="'Answers: '+${question.answers.size()}"></a></p>
+
+                <table class="table" id="table">
+                    <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>Answers</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="answer, it : ${answers}">
+                        <td th:text="${it.index+1}"></td>
+                        <td th:text="${answer.name}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </article>
+
+        </div>
+
+        <th:block th:replace="index/template :: rightbar" />
+    </div>
+
+</main>
+
+<th:block th:replace="index/template :: footer" />
+
+</body>
+</html>

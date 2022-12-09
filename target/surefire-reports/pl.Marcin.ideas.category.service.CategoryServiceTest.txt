@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.Marcin.ideas.category.service.CategoryServiceTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.119 s - in pl.Marcin.ideas.category.service.CategoryServiceTest
