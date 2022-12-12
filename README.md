@@ -43,7 +43,7 @@ I'm a self-taught Java Developer and an engineer. Eager to take new opportunitie
 - 📫 You can reach me via email: **mkulczycki@o2.pl** or LinkedIn:
 <a href="https://linkedin.com/in/markul" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" title="LinkedIn" height="30" width="40" /></a>
 
-<h3 align="left">Languages and Tools:</h3>
+<h3 align="left">Worked with:</h3>
 <code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" title="Java"></code>
 <code><img height="40" src="https://pbs.twimg.com/profile_images/1235868806079057921/fTL08u_H_400x400.png" title="Spring Boot"></code>
 <code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="PostgreSQL"></code>
