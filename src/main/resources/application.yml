@@ -1,0 +1,10 @@
+
+info:
+  application:
+    name: ideas
+    description: A website for asking and answering questions on various topics
+    author: Marcin Kulczycki
+
+spring:
+  profiles:
+    active: dev
