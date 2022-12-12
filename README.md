@@ -5,7 +5,7 @@
 
 <h2>🚀 Screenshots</h2>
 
-![index home](https://user-images.githubusercontent.com/113288219/205456522-e5722e31-9e27-47ea-9f55-729f21aa3e56.JPG)
+![index home](https://user-images.githubusercontent.com/113288219/207064633-db8b3056-5cd7-48d6-a50d-c491e0911c19.png)
 
 ![index hot questions](https://user-images.githubusercontent.com/113288219/205456524-a88c37b1-18b0-4e6c-a88f-4d15547fcc4c.JPG)
 
@@ -34,22 +34,18 @@ Technologies used in the project:
 
 <h2>About me!</h2>
 <h1 align="center">👋 Hi! I'm Marcin 👋</h1>
-I'm Java Developer and an engineer. Eager to take new opportunities in IT and improve myself. Ready to learn and to give my best.
+I'm a self-taught Java Developer and an engineer. Eager to take new opportunities in IT and improve myself. Ready to learn and to give my best.
 
-- 👨‍💻 All of my projects are available at [my github repository](https://github.com/Marun5?tab=repositories)
+- 👨‍💻 All of my projects are available at [github](https://github.com/Marun5?tab=repositories)
 
-- 📫 How to reach me **mkulczycki@o2.pl**
-
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/markul" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="markul" height="30" width="40" /></a>
-</p>
+- 📫 You can reach me via email: **mkulczycki@o2.pl** or on LinkedIn:
+<a href="https://linkedin.com/in/markul" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" title="LinkedIn" height="30" width="40" /></a>
 
 <h3 align="left">Languages and Tools:</h3>
-<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" title="java"></code>
-<code><img height="40" src="https://pbs.twimg.com/profile_images/1235868806079057921/fTL08u_H_400x400.png" title="spring-boot"></code>
-<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="postgreSQL"></code>
-<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" title="html5"></code>
-<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" title="css3"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" title="Java"></code>
+<code><img height="40" src="https://pbs.twimg.com/profile_images/1235868806079057921/fTL08u_H_400x400.png" title="Spring Boot"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="PostgreSQL"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" title="HTML"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" title="CSS"></code>
 <code><img height="40" src="https://user-images.githubusercontent.com/113288219/207062251-a37329d8-4709-4a02-a019-9e3dac34dbc0.png" title="Thymeleaf"></code>
-<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" title="git"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" title="Git"></code>
