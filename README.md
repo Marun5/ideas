@@ -5,10 +5,12 @@
 
 <h2>🚀 Screenshots</h2>
 
-![index home](https://user-images.githubusercontent.com/113288219/205456522-e5722e31-9e27-47ea-9f55-729f21aa3e56.JPG)
+User view:
+![index home](https://user-images.githubusercontent.com/113288219/207064633-db8b3056-5cd7-48d6-a50d-c491e0911c19.png)
 
-![index hot questions](https://user-images.githubusercontent.com/113288219/205456524-a88c37b1-18b0-4e6c-a88f-4d15547fcc4c.JPG)
+![index hot questions](https://user-images.githubusercontent.com/113288219/207068455-d88b0c13-0476-4c9d-93da-9e84e78b8055.png)
 
+Admin view:
 ![admin home](https://user-images.githubusercontent.com/113288219/205456531-748ccc0f-5a7e-43fe-8163-1f21a25dfc3b.JPG)
 
 ![admin categories](https://user-images.githubusercontent.com/113288219/205456540-010477c1-c7b1-4f9f-a404-da7e7781e289.JPG)
@@ -34,16 +36,20 @@ Technologies used in the project:
 
 <h2>About me!</h2>
 <h1 align="center">👋 Hi! I'm Marcin 👋</h1>
-I'm Java Developer and an engineer. Eager to take new opportunities in IT and improve myself. Ready to learn and to give my best.
+I'm a self-taught Java Developer and an engineer. Eager to take new opportunities in IT and improve myself. Ready to learn and to give my best.
 
-- 👨‍💻 All of my projects are available at [my github repository](https://github.com/Marun5?tab=repositories)
+- 👨‍💻 All of my projects are available at [github](https://github.com/Marun5?tab=repositories)
 
-- 📫 How to reach me **mkulczycki@o2.pl**
+- 📫 You can reach me via email: **mkulczycki@o2.pl** or LinkedIn:
+<a href="https://linkedin.com/in/markul" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" title="LinkedIn" height="30" width="40" /></a>
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/markul" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="markul" height="30" width="40" /></a>
-</p>
+<h3 align="left">Worked with:</h3>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" title="Java"></code>
+<code><img height="40" src="https://pbs.twimg.com/profile_images/1235868806079057921/fTL08u_H_400x400.png" title="Spring Boot"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="PostgreSQL"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" title="HTML"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" title="CSS"></code>
+<code><img height="40" src="https://user-images.githubusercontent.com/113288219/207062251-a37329d8-4709-4a02-a019-9e3dac34dbc0.png" title="Thymeleaf"></code>
+<code><img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" title="Git"></code>
+<code><img height="40" src="https://user-images.githubusercontent.com/113288219/207068990-53efdf46-ea10-4994-bd47-c724e53d47f3.png" title="Docker"></code>
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a>  <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> </a> </p>
