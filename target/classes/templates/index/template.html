@@ -340,21 +340,21 @@
                 <div class="p-4">
                     <h4 class="fst-italic">Random questions</h4>
                     <ol th:each="question : ${randomQuestions}" class="list-unstyled mb-0">
-                        <li><a th:text="${question.name}" th:href="'questions/' + ${question.id}"></a></li>
+                        <li><a th:text="${question.name}" th:href="'questions/' + ${question.id}" style="text-decoration: none"></a></li>
                     </ol>
                 </div>
 
                 <div class="p-4">
                     <h4 class="fst-italic">About the author</h4>
                     <p class="mb-0">Marcin Kulczycki</p>
-                    <p class="mb-0">Email:   mkulczycki@o2.pl</p>
+                    <p class="mb-0">Email: mkulczycki@o2.pl</p>
                 </div>
 
                 <div class="p-4">
                     <h4 class="fst-italic">Links</h4>
                     <ol class="list-unstyled">
-                        <li><a href="https://github.com/Marun5/ideas">GitHub</a></li>
-                        <li><a href="https://linkedin.com/in/markul">LinkedIn</a></li>
+                        <li><a href="https://github.com/Marun5/ideas" style="text-decoration: none">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/markul" style="text-decoration: none">LinkedIn</a></li>
                     </ol>
                 </div>
             </div>
