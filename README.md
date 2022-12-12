@@ -40,7 +40,7 @@ I'm a self-taught Java Developer and an engineer. Eager to take new opportunitie
 
 - 👨‍💻 All of my projects are available at [github](https://github.com/Marun5?tab=repositories)
 
-- 📫 You can reach me via email: **mkulczycki@o2.pl** or on LinkedIn:
+- 📫 You can reach me via email: **mkulczycki@o2.pl** or LinkedIn:
 <a href="https://linkedin.com/in/markul" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" title="LinkedIn" height="30" width="40" /></a>
 
 <h3 align="left">Languages and Tools:</h3>
