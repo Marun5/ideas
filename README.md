@@ -1,7 +1,8 @@
 
 <h1 align="center" id="title">IDEAS</h1>
 
-"Ideas" is an application which helps users find out about interesting directions for holidays, news in IT, funny facts about animals or pleasant ways for spending free time. You can ask a question about anything or give an answer to other user's question.
+<h4>Have a question? Ask it. Know an answer? Share it.</h4>
+Ask questions on any topic and get real answers from people.
 
 <h2>🚀 Screenshots</h2>
 
@@ -18,7 +19,9 @@ Admin view:
 
 <h2>💻 Description</h2>
 
-Application is divided into two sections: user and admin. In user section there are various pages for categories, questions and answers. User can find there many features like hot or unanswered questions, most popular categories or check out random question. In admin section, on home page, there are displayed some statistics. As admin you are able to view, add, edit and delete every element. You can find there also other features for all questions and answers. Chceck it out :)
+"Ideas" is an application which helps users find out about interesting directions for holidays, news in IT, facts about animals or ideas for spending free time. You can ask a question about anything or give an answer to other user's question.
+
+Application is divided into two sections: user and admin. In user section there are various pages for categories, questions and answers. User can find there features like hot or unanswered questions, most popular categories or check out random question. In admin section, on home page, there are displayed some statistics. As admin you are able to view, add, edit and delete every element. Check it out :)
 
 
 <h2>💻 Built with</h2>
@@ -34,7 +37,12 @@ Technologies used in the project:
 *   JUnit
 *   Mockito
 
-<h2>About me!</h2>
+<h2>💡Next to improve</h2>
+
+* Login and register section with email verification
+* New roles for the most active users e.g. fixing spelling errors
+
+<h2></h2>
 <h1 align="center">👋 Hi! I'm Marcin 👋</h1>
 I'm a self-taught Java Developer and an engineer. Eager to take new opportunities in IT and improve myself. Ready to learn and to give my best.
 
