@@ -24,7 +24,7 @@ public interface QuestionRepository extends JpaRepository<Question, UUID> {
     @Query(value = "select * from questions q order by random() limit :limit", nativeQuery = true)
     List<Question> findRandomQuestions(int limit);
 
-    @Query("from Question q order by size(q.answers) desc")
+    @Query("from Question q where size(q.answers) > 0 order by size(q.answers) desc")
     List<Question> findHotQuestions();
 
     @Query("from Question q where size(q.answers) = 0")
