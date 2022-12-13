@@ -9,6 +9,7 @@ import pl.marcin.ideas.question.service.QuestionService;
 
 public abstract class IndexAttributeController {
 
+    private final int RANDOM_QUESTIONS_LIMIT = 6;
     @Autowired
     protected CategoryService categoryService;
     @Autowired
@@ -18,6 +19,6 @@ public abstract class IndexAttributeController {
 
     protected void addGlobalAttributes(Model model) {
         model.addAttribute("topCategories", categoryService.topCategories());
-        model.addAttribute("randomQuestions", questionService.findRandomQuestions(6));
+        model.addAttribute("randomQuestions", questionService.findRandomQuestions(RANDOM_QUESTIONS_LIMIT));
     }
 }
