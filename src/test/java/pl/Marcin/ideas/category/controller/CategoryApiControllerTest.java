@@ -61,28 +61,28 @@ class CategoryApiControllerTest {
 
     @Test
     void shouldGetCategories() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/categories"))
+        mockMvc.perform(get("http://localhost:8080/api/v1/categories"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(page)));
     }
 
     @Test
     void shouldGetCategory() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/categories/single/{id}", category.getId()))
+        mockMvc.perform(get("http://localhost:8080/api/v1/categories/single/{id}", category.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(category)));
     }
 
     @Test
     void shouldFindAllByCategoryId() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/categories/{id}", category.getId()))
+        mockMvc.perform(get("http://localhost:8080/api/v1/categories/{id}", category.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(questions)));
     }
 
     @Test
     void shouldCreateCategory() throws Exception {
-        mockMvc.perform(post("http://localhost:8080/api/categories")
+        mockMvc.perform(post("http://localhost:8080/api/v1/categories")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(category)))
                 .andExpect(status().isCreated())
@@ -91,7 +91,7 @@ class CategoryApiControllerTest {
 
     @Test
     void shouldUpdateCategory() throws Exception {
-        mockMvc.perform(put("http://localhost:8080/api/categories/{id}", category.getId())
+        mockMvc.perform(put("http://localhost:8080/api/v1/categories/{id}", category.getId())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(category)))
                 .andExpect(status().isAccepted())
@@ -100,13 +100,13 @@ class CategoryApiControllerTest {
 
     @Test
     void shouldDeleteCategory() throws Exception {
-        mockMvc.perform(delete("http://localhost:8080/api/categories/{id}", category.getId()))
+        mockMvc.perform(delete("http://localhost:8080/api/v1/categories/{id}", category.getId()))
                 .andExpect(status().isNoContent());
     }
 
     @Test
     void shouldCreateQuestion() throws Exception {
-        mockMvc.perform(post("http://localhost:8080/api/categories/{id}", category.getId())
+        mockMvc.perform(post("http://localhost:8080/api/v1/categories/{id}", category.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(question)))
                 .andExpect(status().isCreated())

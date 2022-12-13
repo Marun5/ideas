@@ -36,7 +36,10 @@ class AnswerApiControllerTest {
     @BeforeEach
     void setUp() {
         answer = new Answer("A1");
-        answers = List.of(new Answer("A1"), new Answer("A2"), new Answer("A3"));
+        answers = List.of(
+                new Answer("A1"),
+                new Answer("A2"),
+                new Answer("A3"));
 
         when(answerService.getAnswers()).thenReturn(answers);
         when(answerService.getAnswer(any())).thenReturn(answer);
@@ -46,21 +49,21 @@ class AnswerApiControllerTest {
 
     @Test
     void shouldGetAnswers() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/answers"))
+        mockMvc.perform(get("http://localhost:8080/api/v1/answers"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(answers)));
     }
 
     @Test
     void shouldGetAnswer() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/answers/{id}", answer.getId()))
+        mockMvc.perform(get("http://localhost:8080/api/v1/answers/{id}", answer.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(answer)));
     }
 
     @Test
     void shouldUpdateAnswer() throws Exception {
-        mockMvc.perform(put("http://localhost:8080/api/answers/{id}", answer.getId())
+        mockMvc.perform(put("http://localhost:8080/api/v1/answers/{id}", answer.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(answer)))
                 .andExpect(status().isAccepted())
@@ -69,7 +72,7 @@ class AnswerApiControllerTest {
 
     @Test
     void shouldDeleteAnswer() throws Exception {
-        mockMvc.perform(delete("http://localhost:8080/api/answers/{id}", answer.getId()))
+        mockMvc.perform(delete("http://localhost:8080/api/v1/answers/{id}", answer.getId()))
                 .andExpect(status().isNoContent());
     }
 }

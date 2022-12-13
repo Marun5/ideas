@@ -53,33 +53,32 @@ class QuestionApiControllerTest {
                 (InvocationOnMock invocationOnMock) -> invocationOnMock.getArguments()[1]);
         when(answerService.createAnswer(any(), any())).thenAnswer(
                 (InvocationOnMock invocationOnMock) -> invocationOnMock.getArguments()[1]);
-
     }
 
     @Test
     void shouldGetQuestions() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/questions"))
+        mockMvc.perform(get("http://localhost:8080/api/v1/questions"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(questions)));
     }
 
     @Test
     void shouldGetQuestion() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/questions/{id}", question.getId()))
+        mockMvc.perform(get("http://localhost:8080/api/v1/questions/{id}", question.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(question)));
     }
 
     @Test
     void shouldFindAllByQuestionId() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/api/questions/{id}/answers", question.getId()))
+        mockMvc.perform(get("http://localhost:8080/api/v1/questions/{id}/answers", question.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(answers)));
     }
 
     @Test
     void shouldUpdateQuestion() throws Exception {
-        mockMvc.perform(put("http://localhost:8080/api/questions/{id}", question.getId())
+        mockMvc.perform(put("http://localhost:8080/api/v1/questions/{id}", question.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(question)))
                 .andExpect(status().isAccepted())
@@ -88,13 +87,13 @@ class QuestionApiControllerTest {
 
     @Test
     void shouldDeleteQuestion() throws Exception {
-        mockMvc.perform(delete("http://localhost:8080/api/questions/{id}", question.getId()))
+        mockMvc.perform(delete("http://localhost:8080/api/v1/questions/{id}", question.getId()))
                 .andExpect(status().isNoContent());
     }
 
     @Test
     void shouldCreatAnswer() throws Exception {
-        mockMvc.perform(post("http://localhost:8080/api/questions/{id}", question.getId())
+        mockMvc.perform(post("http://localhost:8080/api/v1/questions/{id}", question.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(answer)))
                 .andExpect(status().isCreated())

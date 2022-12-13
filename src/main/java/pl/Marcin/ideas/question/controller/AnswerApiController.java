@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/answers")
+@RequestMapping("api/v1/answers")
 public class AnswerApiController {
 
     private final AnswerService answerService;
@@ -20,6 +20,7 @@ public class AnswerApiController {
     List<Answer> getAnswers() {
         return answerService.getAnswers();
     }
+
     @GetMapping("{id}")
     Answer getAnswer(@PathVariable("id") UUID id) {
         return answerService.getAnswer(id);
