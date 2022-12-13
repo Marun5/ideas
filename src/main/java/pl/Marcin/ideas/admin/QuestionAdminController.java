@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.marcin.ideas.category.domain.model.Category;
 import pl.marcin.ideas.common.Message;
 import pl.marcin.ideas.question.domain.model.Answer;
 import pl.marcin.ideas.question.domain.model.Question;
@@ -22,6 +21,7 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 import static pl.marcin.ideas.admin.ControllerUtils.paging;
+import static pl.marcin.ideas.admin.ControllerUtils.reverseSort;
 
 @Controller
 @RequestMapping("/admin/questions")
@@ -48,11 +48,8 @@ public class QuestionAdminController {
         model.addAttribute("page", page);
         model.addAttribute("size", size);
 
-        String reverseSort;
-        if("asc".equals(direction)){
-            reverseSort = "desc";
-        }else reverseSort = "asc";
-        model.addAttribute("reverseSort", reverseSort);
+
+        model.addAttribute("reverseSort", reverseSort(direction));
         paging(model, questionsPage);
         return "admin/questions";
     }

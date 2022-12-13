@@ -18,4 +18,14 @@ public abstract class ControllerUtils {
             model.addAttribute("pageNumbers", pageNumbers);
         }
     }
+
+    public static String reverseSort(String direction) {
+        String reverseSort;
+        if("asc".equals(direction)){
+            reverseSort = "desc";
+        }else {
+            reverseSort = "asc";
+        }
+        return reverseSort;
+    }
 }

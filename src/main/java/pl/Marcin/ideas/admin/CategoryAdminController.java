@@ -21,6 +21,7 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 import static pl.marcin.ideas.admin.ControllerUtils.paging;
+import static pl.marcin.ideas.admin.ControllerUtils.reverseSort;
 
 @Controller
 @RequestMapping("/admin/categories")
@@ -47,11 +48,7 @@ public class CategoryAdminController {
         model.addAttribute("page", page);
         model.addAttribute("size", size);
 
-        String reverseSort;
-        if("asc".equals(direction)){
-            reverseSort = "desc";
-        }else reverseSort = "asc";
-        model.addAttribute("reverseSort", reverseSort);
+        model.addAttribute("reverseSort", reverseSort(direction));
         paging(model, categoriesPage);
         return "admin/categories";
     }
