@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.question.service;
+package pl.marcin.ideas.question.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-import pl.Marcin.ideas.category.domain.model.Category;
-import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
-import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.domain.repository.AnswerRepository;
-import pl.Marcin.ideas.question.domain.repository.QuestionRepository;
+import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.category.domain.repository.CategoryRepository;
+import pl.marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.domain.repository.AnswerRepository;
+import pl.marcin.ideas.question.domain.repository.QuestionRepository;
 
 import java.util.List;
 

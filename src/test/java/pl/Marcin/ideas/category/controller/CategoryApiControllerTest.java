@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.category.controller;
+package pl.marcin.ideas.category.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,10 +12,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import pl.Marcin.ideas.category.domain.model.Category;
-import pl.Marcin.ideas.category.service.CategoryService;
-import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.QuestionService;
+import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.category.service.CategoryService;
+import pl.marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.service.QuestionService;
 
 import java.util.LinkedList;
 import java.util.List;

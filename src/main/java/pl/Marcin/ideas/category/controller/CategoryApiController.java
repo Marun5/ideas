@@ -1,14 +1,14 @@
-package pl.Marcin.ideas.category.controller;
+package pl.marcin.ideas.category.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.Marcin.ideas.category.domain.model.Category;
-import pl.Marcin.ideas.category.service.CategoryService;
-import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.QuestionService;
+import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.category.service.CategoryService;
+import pl.marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
 import java.util.UUID;

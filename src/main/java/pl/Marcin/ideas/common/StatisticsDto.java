@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.common;
+package pl.marcin.ideas.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

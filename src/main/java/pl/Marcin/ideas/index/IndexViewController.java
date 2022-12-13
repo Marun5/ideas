@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.index;
+package pl.marcin.ideas.index;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.Marcin.ideas.category.domain.model.Category;
-import pl.Marcin.ideas.question.domain.model.Answer;
-import pl.Marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.question.domain.model.Answer;
+import pl.marcin.ideas.question.domain.model.Question;
 
 import java.util.Collections;
 import java.util.List;

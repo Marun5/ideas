@@ -1,4 +1,4 @@
-package pl.Marcin.ideas;
+package pl.marcin.ideas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

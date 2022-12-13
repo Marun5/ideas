@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.question.domain.model;
+package pl.marcin.ideas.question.domain.model;
 
 import lombok.Data;
 

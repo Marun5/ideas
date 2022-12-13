@@ -1,7 +1,7 @@
-package pl.Marcin.ideas.category.domain.model;
+package pl.marcin.ideas.category.domain.model;
 
 import lombok.Data;
-import pl.Marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.domain.model.Question;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

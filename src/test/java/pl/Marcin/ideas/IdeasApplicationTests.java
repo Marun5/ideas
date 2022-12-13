@@ -1,4 +1,4 @@
-package pl.Marcin.ideas;
+package pl.marcin.ideas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

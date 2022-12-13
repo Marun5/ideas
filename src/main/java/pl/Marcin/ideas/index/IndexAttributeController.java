@@ -1,11 +1,11 @@
-package pl.Marcin.ideas.index;
+package pl.marcin.ideas.index;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import pl.Marcin.ideas.category.service.CategoryService;
-import pl.Marcin.ideas.question.service.AnswerService;
-import pl.Marcin.ideas.question.service.QuestionService;
+import pl.marcin.ideas.category.service.CategoryService;
+import pl.marcin.ideas.question.service.AnswerService;
+import pl.marcin.ideas.question.service.QuestionService;
 
 public abstract class IndexAttributeController {
 

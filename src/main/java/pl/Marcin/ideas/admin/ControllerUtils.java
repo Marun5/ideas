@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.admin;
+package pl.marcin.ideas.admin;
 
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;

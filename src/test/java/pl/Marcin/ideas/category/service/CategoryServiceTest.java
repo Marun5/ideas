@@ -1,13 +1,13 @@
-package pl.Marcin.ideas.category.service;
+package pl.marcin.ideas.category.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import pl.Marcin.ideas.category.domain.model.Category;
-import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
-import pl.Marcin.ideas.question.domain.repository.AnswerRepository;
-import pl.Marcin.ideas.question.domain.repository.QuestionRepository;
+import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.category.domain.repository.CategoryRepository;
+import pl.marcin.ideas.question.domain.repository.AnswerRepository;
+import pl.marcin.ideas.question.domain.repository.QuestionRepository;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package pl.Marcin.ideas.question.controller;
+package pl.marcin.ideas.question.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.Marcin.ideas.question.domain.model.Answer;
-import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.AnswerService;
-import pl.Marcin.ideas.question.service.QuestionService;
+import pl.marcin.ideas.question.domain.model.Answer;
+import pl.marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.service.AnswerService;
+import pl.marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
 import java.util.UUID;

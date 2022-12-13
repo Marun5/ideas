@@ -1,12 +1,12 @@
-package pl.Marcin.ideas.category.service;
+package pl.marcin.ideas.category.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.Marcin.ideas.category.domain.model.Category;
-import pl.Marcin.ideas.category.domain.repository.CategoryRepository;
+import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.category.domain.repository.CategoryRepository;
 
 import java.util.List;
 import java.util.UUID;

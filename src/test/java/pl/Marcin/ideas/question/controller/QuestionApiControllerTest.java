@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.question.controller;
+package pl.marcin.ideas.question.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,10 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import pl.Marcin.ideas.question.domain.model.Answer;
-import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.AnswerService;
-import pl.Marcin.ideas.question.service.QuestionService;
+import pl.marcin.ideas.question.domain.model.Answer;
+import pl.marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.service.AnswerService;
+import pl.marcin.ideas.question.service.QuestionService;
 
 import java.util.List;
 

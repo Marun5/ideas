@@ -1,4 +1,4 @@
-package pl.Marcin.ideas.admin;
+package pl.marcin.ideas.admin;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,14 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.Marcin.ideas.common.Message;
-import pl.Marcin.ideas.question.domain.model.Answer;
-import pl.Marcin.ideas.question.domain.model.Question;
-import pl.Marcin.ideas.question.service.AnswerService;
+import pl.marcin.ideas.common.Message;
+import pl.marcin.ideas.question.domain.model.Answer;
+import pl.marcin.ideas.question.service.AnswerService;
 
 import java.util.UUID;
 
-import static pl.Marcin.ideas.admin.ControllerUtils.paging;
+import static pl.marcin.ideas.admin.ControllerUtils.paging;
 
 @Controller
 @RequestMapping("/admin/answers")
