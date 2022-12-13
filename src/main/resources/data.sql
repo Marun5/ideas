@@ -23,6 +23,7 @@ insert into questions (id, name, category_id) values
       (gen_random_uuid(), 'How much does a golf ball weigh?', (select id from categories where name = 'Sport')),
       (gen_random_uuid(), 'New movies in 2023', (select id from categories where name = 'Film')),
       (gen_random_uuid(), 'Instruments you like to play on', (select id from categories where name = 'Music')),
+      (gen_random_uuid(), 'Is 25 too old to learn an instrument?', (select id from categories where name = 'Music')),
       (gen_random_uuid(), 'What predatory animals do you know?', (select id from categories where name = 'Animals')),
       (gen_random_uuid(), 'What are the most healthy vitamins?', (select id from categories where name = 'Health')),
       (gen_random_uuid(), 'How often should you exercise?', (select id from categories where name = 'Health'));
@@ -36,6 +37,8 @@ insert into answers (id, name, question_id) values
       (gen_random_uuid(), 'Drums', (select id from questions where name = 'Instruments you like to play on')),
       (gen_random_uuid(), 'Guitar', (select id from questions where name = 'Instruments you like to play on')),
       (gen_random_uuid(), 'Violin', (select id from questions where name = 'Instruments you like to play on')),
+      (gen_random_uuid(), 'Never too old to learn an instrument', (select id from questions where name = 'Is 25 too old to learn an instrument?')),
+      (gen_random_uuid(), 'Certainly not. I know a fellow who took up bagpipes when he was in his 30s...and he became really good.', (select id from questions where name = 'Is 25 too old to learn an instrument?')),
       (gen_random_uuid(), 'Cheetah', (select id from questions where name = 'What predatory animals do you know?')),
       (gen_random_uuid(), 'Lion', (select id from questions where name = 'What predatory animals do you know?')),
       (gen_random_uuid(), 'Tiger', (select id from questions where name = 'What predatory animals do you know?')),
