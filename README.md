@@ -19,7 +19,7 @@ Admin view:
 
 <h2>💻 Description</h2>
 
-"Ideas" is an application which helps users find out about interesting directions for holidays, news in IT, facts about animals or ideas for spending free time. You can ask a question about anything or give an answer to other user's question.
+"Ideas" lets users find out about interesting directions for holidays, news in IT, facts about animals or ideas for spending free time. You can ask a question about anything or give an answer to other user's question.
 
 Application is divided into two sections: user and admin. In user section there are various pages for categories, questions and answers. User can find there features like hot or unanswered questions, most popular categories or check out random question. In admin section, on home page, there are displayed some statistics. As admin you are able to view, add, edit and delete every element. Check it out :)
 
