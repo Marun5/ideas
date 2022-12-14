@@ -81,7 +81,6 @@ class AnswerServiceTest {
         Answer result = answerRepository.getReferenceById(answer1.getId());
 
         //then
-
         assertThat(result).isEqualTo(answerRepository.getReferenceById(answer1.getId()));
         assertThat(result.getId()).isEqualTo(answerRepository.getReferenceById(answer1.getId()).getId());
         assertThat(result.getName()).isEqualTo(answerRepository.getReferenceById(answer1.getId()).getName());
