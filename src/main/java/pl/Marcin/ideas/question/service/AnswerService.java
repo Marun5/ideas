@@ -65,12 +65,14 @@ public class AnswerService {
 
     @Transactional
     public Answer createAnswer(UUID questionId, Answer answerRequest) {
+        Answer answer = new Answer();
+        answer.setName(answerRequest.getName());
         Question question = questionRepository.getReferenceById(questionId);
-        answerRequest.setQuestion(question);
+        answer.setQuestion(question);
         questionRepository.save(question);
-        answerRepository.save(answerRequest);
+        answerRepository.save(answer);
 
-        return answerRequest;
+        return answer;
     }
 
     @Transactional
