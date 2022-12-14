@@ -6,6 +6,7 @@ import pl.marcin.ideas.category.domain.model.Category;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +25,8 @@ public class Question {
     private Category category;
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
+    private LocalDateTime created;
+    private LocalDateTime modified;
 
     public Question() {
         this.id = UUID.randomUUID();
@@ -31,5 +34,16 @@ public class Question {
     public Question(String name) {
         this();
         this.name = name;
+    }
+
+    @PrePersist
+    void prePersist() {
+        created = LocalDateTime.now();
+        modified = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    void preUpdate() {
+        modified = LocalDateTime.now();
     }
 }

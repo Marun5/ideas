@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.marcin.ideas.category.domain.model.Category;
 import pl.marcin.ideas.category.domain.repository.CategoryRepository;
+import pl.marcin.ideas.category.dto.CategoryDto;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -17,13 +19,18 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
+    private final CategoryMapper categoryMapper;
+
     @Transactional(readOnly = true)
     public List<Category> getCategories() {
         return categoryRepository.findAll();
     }
     @Transactional(readOnly = true)
-    public List<Category> getCategories(String search) {
-        return categoryRepository.findAllByNameContainingIgnoreCase(search);
+    public List<CategoryDto> getCategories(String search) {
+        return categoryRepository.findAllByNameContainingIgnoreCase(search)
+                .stream()
+                .map(categoryMapper::map)
+                .collect(Collectors.toList());
     }
     @Transactional(readOnly = true)
     public Page<Category> getCategories(Pageable pageable) {
@@ -74,7 +81,9 @@ public class CategoryService {
     }
 
     @Transactional(readOnly = true)
-    public List<Category> countEmptyCategories() {
-        return categoryRepository.countEmptyCategories();
+    public List<CategoryDto> countEmptyCategories() {
+        return categoryRepository.countEmptyCategories()
+                .stream().map(categoryMapper::map)
+                .collect(Collectors.toList());
     }
 }

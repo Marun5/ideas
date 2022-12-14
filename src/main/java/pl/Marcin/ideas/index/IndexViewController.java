@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.marcin.ideas.category.domain.model.Category;
+import pl.marcin.ideas.category.dto.CategoryDto;
 import pl.marcin.ideas.question.domain.model.Answer;
 import pl.marcin.ideas.question.domain.model.Question;
+import pl.marcin.ideas.question.dto.AnswerDto;
+import pl.marcin.ideas.question.dto.QuestionDto;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +29,7 @@ public class IndexViewController extends IndexAttributeController {
     @GetMapping("index")
     public String indexView(Model model) {
         addGlobalAttributes(model);
-        List<Question> questionsWithMinTwoAnswers = questionService.findQuestionsWithMinTwoAnswers();
+        List<QuestionDto> questionsWithMinTwoAnswers = questionService.findQuestionsWithMinTwoAnswers();
         Collections.shuffle(questionsWithMinTwoAnswers);
         model.addAttribute("questionsWithMinTwoAnswers", questionsWithMinTwoAnswers);
         model.addAttribute("categories", categoryService.topCategories());
@@ -38,9 +41,9 @@ public class IndexViewController extends IndexAttributeController {
     public String searchView(@RequestParam(name="s", required = false) String search, Model model) {
         addGlobalAttributes(model);
         model.addAttribute("search", search);
-        List<Category> searchCategories = categoryService.getCategories(search);
-        List<Question> searchQuestions = questionService.getQuestions(search);
-        List<Answer> searchAnswers = answerService.getAnswers(search);
+        List<CategoryDto> searchCategories = categoryService.getCategories(search);
+        List<QuestionDto> searchQuestions = questionService.getQuestions(search);
+        List<AnswerDto> searchAnswers = answerService.getAnswers(search);
 
         model.addAttribute("searchCategories", searchCategories);
         model.addAttribute("searchQuestions", searchQuestions);

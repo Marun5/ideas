@@ -32,9 +32,6 @@
             </div>
 
             <article class="blog-post">
-<!--                <p1 class="p-2 link-secondary"><a href="categories" style="text-decoration: none">Categories</a></p1>-->
-<!--                <h2 th:text="${category.name}" class="blog-post-title mb-1"></h2>-->
-<!--                <p class="blog-post-meta"><a th:text="'Questions: '+${category.questions.size()}"></a></p>-->
 
 
                 <table th:if="${!#strings.isEmpty(search)}" class="table" id="table">
@@ -61,7 +58,7 @@
                     <tr th:each="answer, it : ${searchAnswers}">
                         <td th:text="${it.index+1+searchCategories.size()+searchQuestions.size()}"></td>
                         <td>Answer</td>
-                        <td><a th:text="${answer.name}" th:href="'questions/'+${answer.question.id}"
+                        <td><a th:text="${answer.name}" th:href="'questions/'+${answer.questionId}"
                                class="p-2 link-secondary" style="text-decoration: none"></a></td>
                     </tr>
                     </tbody>

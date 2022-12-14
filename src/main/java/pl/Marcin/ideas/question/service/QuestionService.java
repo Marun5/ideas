@@ -9,9 +9,11 @@ import pl.marcin.ideas.category.domain.model.Category;
 import pl.marcin.ideas.category.domain.repository.CategoryRepository;
 import pl.marcin.ideas.question.domain.model.Question;
 import pl.marcin.ideas.question.domain.repository.QuestionRepository;
+import pl.marcin.ideas.question.dto.QuestionDto;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -19,6 +21,7 @@ public class QuestionService {
 
     private final CategoryRepository categoryRepository;
     private final QuestionRepository questionRepository;
+    private final QuestionMapper questionMapper;
 
     @Transactional(readOnly = true)
     public List<Question> getQuestions() {
@@ -33,8 +36,11 @@ public class QuestionService {
         }
     }
     @Transactional(readOnly = true)
-    public List<Question> getQuestions(String search) {
-        return questionRepository.findAllByNameContainingIgnoreCase(search);
+    public List<QuestionDto> getQuestions(String search) {
+        return questionRepository.findAllByNameContainingIgnoreCase(search)
+                .stream()
+                .map(questionMapper::map)
+                .collect(Collectors.toList());
     }
     @Transactional(readOnly = true)
     public List<Question> findAllByCategoryId(UUID id) {
@@ -91,22 +97,34 @@ public class QuestionService {
     }
 
     @Transactional(readOnly = true)
-    public List<Question> findRandomQuestions(int limit) {
-        return questionRepository.findRandomQuestions(limit);
+    public List<QuestionDto> findRandomQuestions(int limit) {
+        return questionRepository.findRandomQuestions(limit)
+                .stream()
+                .map(questionMapper::map)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public List<Question> findHotQuestions() {
-        return questionRepository.findHotQuestions();
+    public List<QuestionDto> findHotQuestions() {
+        return questionRepository.findHotQuestions()
+                .stream()
+                .map(questionMapper::map)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public List<Question> findUnansweredQuestions() {
-        return questionRepository.findUnansweredQuestions();
+    public List<QuestionDto> findUnansweredQuestions() {
+        return questionRepository.findUnansweredQuestions()
+                .stream()
+                .map(questionMapper::map)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public List<Question> findQuestionsWithMinTwoAnswers() {
-        return questionRepository.findQuestionsWithMinTwoAnswers();
+    public List<QuestionDto> findQuestionsWithMinTwoAnswers() {
+        return questionRepository.findQuestionsWithMinTwoAnswers()
+                .stream()
+                .map(questionMapper::map)
+                .collect(Collectors.toList());
     }
 }

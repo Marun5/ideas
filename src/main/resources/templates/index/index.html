@@ -13,28 +13,28 @@
         <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary" th:text="${questionsWithMinTwoAnswers.get(0).category.name}"></strong>
+                    <strong class="d-inline-block mb-2 text-primary" th:text="${questionsWithMinTwoAnswers.get(0).categoryName}"></strong>
                     <h3 class="mb-0" th:text="${questionsWithMinTwoAnswers.get(0).name}"></h3>
-                    <div class="mb-1 text-muted" th:text="'Answers: '+${questionsWithMinTwoAnswers.get(0).answers.size()}"></div>
+                    <div class="mb-1 text-muted" th:text="'Answers: '+${questionsWithMinTwoAnswers.get(0).answers}"></div>
                     <p></p>
                     <a th:href="'questions/'+${questionsWithMinTwoAnswers.get(0).id}" class="stretched-link">See more</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <img th:src="@{${'img/'+questionsWithMinTwoAnswers.get(0).category.name.toLowerCase()+'.jpg'}}" alt="Category photo" class="img-fluid">
+                    <img th:src="@{${'img/'+questionsWithMinTwoAnswers.get(0).categoryName.toLowerCase()+'.jpg'}}" alt="Category photo" class="img-fluid">
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success" th:text="${questionsWithMinTwoAnswers.get(1).category.name}"></strong>
+                    <strong class="d-inline-block mb-2 text-success" th:text="${questionsWithMinTwoAnswers.get(1).categoryName}"></strong>
                     <h3 class="mb-0" th:text="${questionsWithMinTwoAnswers.get(1).name}"></h3>
-                    <div class="mb-1 text-muted" th:text="'Answers: '+${questionsWithMinTwoAnswers.get(1).answers.size()}"></div>
+                    <div class="mb-1 text-muted" th:text="'Answers: '+${questionsWithMinTwoAnswers.get(1).answers}"></div>
                     <p></p>
                     <a th:href="'questions/'+${questionsWithMinTwoAnswers.get(1).id}" class="stretched-link">See more</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <img th:src="@{${'img/'+questionsWithMinTwoAnswers.get(1).category.name.toLowerCase()+'.jpg'}}" alt="Category photo" class="img-fluid">
+                    <img th:src="@{${'img/'+questionsWithMinTwoAnswers.get(1).categoryName.toLowerCase()+'.jpg'}}" alt="Category photo" class="img-fluid">
                 </div>
             </div>
         </div>

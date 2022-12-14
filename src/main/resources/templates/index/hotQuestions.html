@@ -27,7 +27,7 @@
                     <tr th:each="question, it : ${hotQuestions}">
                         <td th:text="${it.index+1}"></td>
                         <td><a th:text="${question.name}" th:href="'questions/'+${question.id}" class="p-2 link-secondary" style="text-decoration: none"></a></td>
-                        <td th:text="${question.answers.size()}"></td>
+                        <td th:text="${question.answers}"></td>
                     </tr>
                     </tbody>
                 </table>
