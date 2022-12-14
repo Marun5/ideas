@@ -9,9 +9,11 @@ import pl.marcin.ideas.question.domain.model.Answer;
 import pl.marcin.ideas.question.domain.model.Question;
 import pl.marcin.ideas.question.domain.repository.AnswerRepository;
 import pl.marcin.ideas.question.domain.repository.QuestionRepository;
+import pl.marcin.ideas.question.dto.AnswerDto;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -19,14 +21,18 @@ public class AnswerService {
 
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
+    private final AnswerMapper answerMapper;
 
     @Transactional(readOnly = true)
     public List<Answer> getAnswers() {
         return answerRepository.findAll();
     }
     @Transactional(readOnly = true)
-    public List<Answer> getAnswers(String search) {
-        return answerRepository.findAllByNameContainingIgnoreCase(search);
+    public List<AnswerDto> getAnswers(String search) {
+        return answerRepository.findAllByNameContainingIgnoreCase(search)
+                .stream()
+                .map(answerMapper::map)
+                .collect(Collectors.toList());
     }
     @Transactional(readOnly = true)
     public Page<Answer> getAnswers(String search, Pageable pageable) {
@@ -59,15 +65,12 @@ public class AnswerService {
 
     @Transactional
     public Answer createAnswer(UUID questionId, Answer answerRequest) {
-        Answer answer = new Answer();
-        answer.setName(answerRequest.getName());
-
         Question question = questionRepository.getReferenceById(questionId);
-        answer.setQuestion(question);
+        answerRequest.setQuestion(question);
         questionRepository.save(question);
-        answerRepository.save(answer);
+        answerRepository.save(answerRequest);
 
-        return answer;
+        return answerRequest;
     }
 
     @Transactional

@@ -16,7 +16,7 @@ public class Answer {
     @Column(columnDefinition = "uuid")
     private UUID id;
     @NotBlank
-    @Size(max = 255)
+    @Size(min = 1, max = 255)
     private String name;
     @ManyToOne
     private Question question;

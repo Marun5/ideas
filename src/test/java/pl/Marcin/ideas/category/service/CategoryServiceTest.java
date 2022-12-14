@@ -63,7 +63,7 @@ class CategoryServiceTest {
         Category result = categoryService.getCategory(category.getId());
 
         //then
-        assertThat(result).isEqualTo(category);
+        assertThat(result).isEqualTo(categoryRepository.getReferenceById(category.getId()));
         assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getId());
         assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getName());
     }
@@ -77,9 +77,9 @@ class CategoryServiceTest {
         Category result = categoryService.createCategory(category);
 
         //then
-        assertThat(result.getName()).isEqualTo(category.getName());
-        assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(result.getId()).getId());
-        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(result.getId()).getName());
+        assertThat(result).isEqualTo(categoryRepository.getReferenceById(category.getId()));
+        assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getId());
+        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getName());
 
     }
 
@@ -87,7 +87,8 @@ class CategoryServiceTest {
     void shouldUpdateCategory() {
         //given
         Category category = new Category("Category 1");
-        Category categoryRequest = categoryService.createCategory(category);
+        categoryRepository.save(category);
+        Category categoryRequest = categoryService.getCategory(category.getId());
 
         categoryRequest.setName("Updated name");
 
@@ -95,8 +96,9 @@ class CategoryServiceTest {
         Category result = categoryService.updateCategory(categoryRequest.getId(), categoryRequest);
 
         //then
-        assertThat(result.getName()).isEqualTo(categoryRequest.getName());
-        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(result.getId()).getName());
+        assertThat(result).isEqualTo(categoryRepository.getReferenceById(categoryRequest.getId()));
+        assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(categoryRequest.getId()).getId());
+        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(categoryRequest.getId()).getName());
 
     }
 

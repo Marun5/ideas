@@ -76,9 +76,10 @@ class QuestionServiceTest {
         Question result = questionService.getQuestion(question.getId());
 
         //then
-        assertThat(result).isEqualTo(question);
         assertThat(result).isEqualTo(questionRepository.getReferenceById(question.getId()));
-        assertThat(result.getCategory()).isEqualTo(category);
+        assertThat(result.getId()).isEqualTo(questionRepository.getReferenceById(question.getId()).getId());
+        assertThat(result.getName()).isEqualTo(questionRepository.getReferenceById(question.getId()).getName());
+        assertThat(result.getCategory()).isEqualTo(questionRepository.getReferenceById(question.getId()).getCategory());
     }
 
     @Test
@@ -88,16 +89,16 @@ class QuestionServiceTest {
         categoryRepository.save(category);
         Question question = new Question("Question1");
         question.setCategory(category);
+        questionRepository.save(question);
 
         //when
         Question result = questionService.createQuestion(category.getId(), question);
 
         //then
-        assertThat(result.getName()).isEqualTo(question.getName());
-        assertThat(result.getId()).isEqualTo(questionRepository.getReferenceById(result.getId()).getId());
-        assertThat(result.getCategory()).isEqualTo(category);
-        assertThat(result.getCategory()).isEqualTo(questionRepository.getReferenceById(result.getId()).getCategory());
+        assertThat(result).isEqualTo(questionRepository.getReferenceById(question.getId()));
+        assertThat(result.getId()).isEqualTo(questionRepository.getReferenceById(question.getId()).getId());
         assertThat(result.getName()).isEqualTo(questionRepository.getReferenceById(result.getId()).getName());
+        assertThat(result.getCategory()).isEqualTo(questionRepository.getReferenceById(question.getId()).getCategory());
     }
 
     @Test
@@ -115,7 +116,7 @@ class QuestionServiceTest {
         Question result = questionService.updateQuestion(question.getId(), question);
 
         //then
-        assertThat(result.getName()).isEqualTo(question.getName());
+        assertThat(result.getId()).isEqualTo(questionRepository.getReferenceById(question.getId()).getId());
         assertThat(result.getName()).isEqualTo(questionRepository.getReferenceById(result.getId()).getName());
         assertThat(result.getName()).isEqualTo("Updated name");
     }
