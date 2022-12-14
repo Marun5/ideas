@@ -1,5 +1,6 @@
 package pl.marcin.ideas.category.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,13 +27,16 @@ class CategoryServiceTest {
     @Autowired
     private CategoryService categoryService;
 
-    @Test
-    void shouldGetAllCategories() {
-        //given
+    @BeforeEach
+    void setUp() {
         answerRepository.deleteAll();
         questionRepository.deleteAll();
         categoryRepository.deleteAll();
+    }
 
+    @Test
+    void shouldGetAllCategories() {
+        //given
         categoryRepository.saveAll(List.of(
                 new Category("Category 1"),
                 new Category("Category 2"),
@@ -52,10 +56,6 @@ class CategoryServiceTest {
     @Test
     void shouldGetCategory() {
         //given
-        answerRepository.deleteAll();
-        questionRepository.deleteAll();
-        categoryRepository.deleteAll();
-
         Category category = new Category("Category 1");
         categoryRepository.save(category);
 

@@ -1,5 +1,6 @@
 package pl.marcin.ideas.question.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +27,13 @@ class AnswerServiceTest {
     private AnswerRepository answerRepository;
     @Autowired
     private AnswerService answerService;
+
+    @BeforeEach
+    void setUp() {
+        answerRepository.deleteAll();
+        questionRepository.deleteAll();
+        categoryRepository.deleteAll();
+    }
 
     @Test
     void shouldFindAllByQuestionId() {
