@@ -73,6 +73,7 @@ public class CategoryService {
         return categoryRepository.topCategories();
     }
 
+    @Transactional(readOnly = true)
     public List<Category> countEmptyCategories() {
         return categoryRepository.countEmptyCategories();
     }
