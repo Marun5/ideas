@@ -95,10 +95,9 @@ class QuestionServiceTest {
         Question result = questionService.createQuestion(category.getId(), question);
 
         //then
-        assertThat(result).isEqualTo(questionRepository.getReferenceById(question.getId()));
-        assertThat(result.getId()).isEqualTo(questionRepository.getReferenceById(question.getId()).getId());
+        assertThat(result.getId()).isEqualTo(questionRepository.getReferenceById(result.getId()).getId());
         assertThat(result.getName()).isEqualTo(questionRepository.getReferenceById(result.getId()).getName());
-        assertThat(result.getCategory()).isEqualTo(questionRepository.getReferenceById(question.getId()).getCategory());
+        assertThat(result.getCategory()).isEqualTo(questionRepository.getReferenceById(result.getId()).getCategory());
     }
 
     @Test

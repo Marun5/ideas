@@ -107,16 +107,12 @@ class AnswerServiceTest {
         Answer result = answerService.createAnswer(question1.getId(), answer2);
 
         //then
-        assertThat(result).isEqualTo(answerRepository.getReferenceById(answer2.getId()));
-        assertThat(result.getId()).isEqualTo(answerRepository.getReferenceById(answer2.getId()).getId());
-        assertThat(result.getName()).isEqualTo(answerRepository.getReferenceById(answer2.getId()).getName());
+        assertThat(result.getId()).isEqualTo(answerRepository.getReferenceById(result.getId()).getId());
+        assertThat(result.getName()).isEqualTo(answerRepository.getReferenceById(result.getId()).getName());
         assertThat(answerRepository.findAllByQuestionId(question1.getId()))
                 .hasSize(2)
                 .extracting(Answer::getName)
                 .containsExactlyInAnyOrder("Answer1", "Answer2");
-        assertThat(result.getQuestion()).isEqualTo(answerRepository.getReferenceById(answer2.getId()).getQuestion());
-        assertThat(result.getQuestion().getCategory())
-                .isEqualTo(answerRepository.getReferenceById(answer2.getId()).getQuestion().getCategory());
     }
 
     @Test

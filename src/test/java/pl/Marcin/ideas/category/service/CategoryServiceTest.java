@@ -77,10 +77,8 @@ class CategoryServiceTest {
         Category result = categoryService.createCategory(category);
 
         //then
-        assertThat(result).isEqualTo(categoryRepository.getReferenceById(category.getId()));
-        assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getId());
-        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(category.getId()).getName());
-
+        assertThat(result.getId()).isEqualTo(categoryRepository.getReferenceById(result.getId()).getId());
+        assertThat(result.getName()).isEqualTo(categoryRepository.getReferenceById(result.getId()).getName());
     }
 
     @Test
